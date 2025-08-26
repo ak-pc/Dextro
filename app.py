@@ -77,19 +77,16 @@ st.set_page_config(
     layout="wide"
 )
 
-# Custom CSS for the logo
+# Custom CSS for the app
 st.markdown("""
 <style>
-.dextro-logo {
-    font-family: Arial, sans-serif; 
-    font-weight: bold; 
-    font-size: 3rem; 
-    background: linear-gradient(45deg, #4F46E5, #7C3AED, #A855F7); 
-    background-clip: text; 
-    -webkit-background-clip: text; 
-    -webkit-text-fill-color: transparent; 
-    text-align: center; 
+.dextro-logo-container {
+    text-align: center;
     margin: 20px 0;
+}
+.dextro-logo-img {
+    max-height: 80px;
+    width: auto;
 }
 .stTabs [data-baseweb="tab-list"] button [data-testid="stMarkdownContainer"] p {
     font-size: 18px;
@@ -97,6 +94,30 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
+
+@st.cache_data
+def get_logo_base64():
+    """Get the Dextro logo as base64 encoded string"""
+    try:
+        import base64
+        import os
+        
+        # Try relative path first (for deployment), then absolute path (for local development)
+        logo_paths = [
+            "dextro_logo.png",  # Relative path for deployment
+            "/Users/amulya/Desktop/workplace/Dextro/dextro_logo.png"  # Absolute path for local
+        ]
+        
+        for logo_path in logo_paths:
+            if os.path.exists(logo_path):
+                with open(logo_path, "rb") as img_file:
+                    return base64.b64encode(img_file.read()).decode()
+        
+        # If no logo found, return empty string (will show alt text)
+        return ""
+    except Exception as e:
+        st.error(f"Could not load logo: {e}")
+        return ""
 
 @st.cache_resource
 def init_datalake() -> Client:
@@ -123,7 +144,7 @@ def init_gemini_agent():
         )
         
         # Create Strands Agent with tools
-        tools = [get_device_power_data, analyze_pump_error_codes]
+        tools = [get_device_power_data, analyze_pump_error_codes, create_sample_device_data]
         agent = Agent(model=model, tools=tools)
         return agent
         
@@ -143,26 +164,74 @@ def get_device_power_data(device_id: int) -> dict:
     Returns:
         Dictionary containing device data, customer info, and pump error codes
     """
+    logs = []  # Collect all logs
+    logs.append(f"🔍 Starting data fetch for device ID: {device_id}")
+    
     try:
         datalake = init_datalake()
+        logs.append("✅ DataLake connection established")
         
-        # Call the existing function
+        # First, let's try to get data directly from device_power_logs table
+        try:
+            logs.append(f"📊 Querying device_power_logs table for device_id = {device_id}")
+            direct_response = datalake.table("device_power_logs").select("*").eq("device_id", device_id).execute()
+            logs.append(f"📈 Direct query response: {len(direct_response.data) if direct_response.data else 0} records found")
+            
+            if direct_response.data:
+                logs.append("🔍 Processing records to extract pump errors...")
+                pump_errors = []
+                for i, record in enumerate(direct_response.data):
+                    pump_error = record.get('pump_error', 'NORMAL')
+                    logs.append(f"   Record {i+1}: pump_error = '{pump_error}'")
+                    if pump_error and pump_error not in ['NORMAL', '', None]:
+                        pump_errors.append(pump_error)
+                        logs.append(f"   ⚠️  Error detected: {pump_error}")
+                
+                logs.append(f"✅ Data processing complete. Found {len(pump_errors)} pump errors")
+                
+                return {
+                    "success": True,
+                    "device_id": device_id,
+                    "total_records": len(direct_response.data),
+                    "pump_errors": pump_errors,
+                    "unique_errors": list(set(pump_errors)),
+                    "method_used": "direct_query",
+                    "raw_data": direct_response.data[:3],  # First 3 records for context
+                    "sample_record": direct_response.data[0] if direct_response.data else None,
+                    "fetch_logs": logs,
+                    "all_records": direct_response.data  # Include all data for debugging
+                }
+        except Exception as direct_error:
+            logs.append(f"❌ Direct query failed: {str(direct_error)}")
+            logs.append("🔄 Trying fallback method...")
+            # If direct query fails, try the joined function
+            pass
+        
+        # Fallback to the existing function
+        logs.append("🔄 Using fallback joined query method...")
         joined_data, method = fetch_device_power_logs_with_customer(datalake, device_id)
+        logs.append(f"📊 Joined query returned: method={method}, records={len(joined_data) if joined_data else 0}")
         
         if joined_data:
+            logs.append("🔍 Processing joined data to extract pump errors...")
             # Extract pump errors from the data
             pump_errors = []
-            for record in joined_data:
+            for i, record in enumerate(joined_data):
                 if isinstance(record, dict):
                     # Handle different data structures depending on method
                     if method == "rpc_function":
                         device_data = record.get('device_power_logs', {})
                         pump_error = device_data.get('pump_error', 'NORMAL')
+                        logs.append(f"   RPC Record {i+1}: device_data={device_data}, pump_error='{pump_error}'")
                     else:
                         pump_error = record.get('pump_error', 'NORMAL')
+                        logs.append(f"   Direct Record {i+1}: pump_error='{pump_error}'")
                     
-                    if pump_error and pump_error != 'NORMAL':
+                    if pump_error and pump_error not in ['NORMAL', '', None]:
                         pump_errors.append(pump_error)
+                        logs.append(f"   ⚠️  Error detected: {pump_error}")
+            
+            logs.append(f"✅ Joined data processing complete. Found {len(pump_errors)} pump errors")
             
             return {
                 "success": True,
@@ -171,24 +240,49 @@ def get_device_power_data(device_id: int) -> dict:
                 "pump_errors": pump_errors,
                 "unique_errors": list(set(pump_errors)),
                 "method_used": method,
-                "raw_data": joined_data[:3]  # First 3 records for context
+                "raw_data": joined_data[:3],  # First 3 records for context
+                "sample_record": joined_data[0] if joined_data else None,
+                "fetch_logs": logs,
+                "all_records": joined_data  # Include all data for debugging
             }
         else:
-            return {
-                "success": False,
-                "device_id": device_id,
-                "error": "No data found for this device ID",
-                "pump_errors": [],
-                "unique_errors": []
-            }
+            logs.append("❌ No data found, checking for available device IDs...")
+            # Try to get available device IDs for debugging
+            try:
+                available_devices = datalake.table("device_power_logs").select("device_id").limit(10).execute()
+                available_ids = [str(row.get('device_id')) for row in available_devices.data] if available_devices.data else []
+                logs.append(f"📋 Available device IDs in database: {available_ids}")
+                
+                return {
+                    "success": False,
+                    "device_id": device_id,
+                    "error": f"No data found for device ID {device_id}",
+                    "pump_errors": [],
+                    "unique_errors": [],
+                    "available_device_ids": available_ids,
+                    "suggestion": f"Try one of these device IDs: {', '.join(available_ids[:5])}" if available_ids else "No devices found in database",
+                    "fetch_logs": logs
+                }
+            except Exception as avail_error:
+                logs.append(f"❌ Failed to get available device IDs: {str(avail_error)}")
+                return {
+                    "success": False,
+                    "device_id": device_id,
+                    "error": f"No data found for device ID {device_id}. Database query failed: {str(avail_error)}",
+                    "pump_errors": [],
+                    "unique_errors": [],
+                    "fetch_logs": logs
+                }
             
     except Exception as e:
+        logs.append(f"💥 Critical error in get_device_power_data: {str(e)}")
         return {
             "success": False,
             "device_id": device_id,
             "error": str(e),
             "pump_errors": [],
-            "unique_errors": []
+            "unique_errors": [],
+            "fetch_logs": logs
         }
 
 @tool  
@@ -248,6 +342,111 @@ def analyze_pump_error_codes(error_codes: list) -> dict:
             analysis["error_breakdown"][error_code]["count"] += 1
     
     return analysis
+
+@tool
+def create_sample_device_data(device_id: int) -> dict:
+    """
+    Create sample device power data with pump error codes for testing.
+    
+    Args:
+        device_id: The device ID to create sample data for
+        
+    Returns:
+        Dictionary with success status and created data info
+    """
+    logs = []
+    logs.append(f"🧪 Creating sample data for device ID: {device_id}")
+    
+    try:
+        datalake = init_datalake()
+        logs.append("✅ DataLake connection established for sample data creation")
+        
+        # Sample data with different pump error codes
+        logs.append("📋 Preparing sample records with various pump error codes...")
+        sample_records = [
+            {
+                "device_id": device_id,
+                "power": "450.2W",
+                "voltage": 230.5,
+                "pump_error": "E001",
+                "current": "1.95A",
+                "created_on_date": "2024-01-15 10:30:00",
+                "location": "Pump Station A",
+                "district": "North District",
+                "franchise": "WaterTech Solutions"
+            },
+            {
+                "device_id": device_id,
+                "power": "0.0W",
+                "voltage": 220.3,
+                "pump_error": "E006",
+                "current": "0.0A",
+                "created_on_date": "2024-01-15 11:45:00",
+                "location": "Pump Station A",
+                "district": "North District", 
+                "franchise": "WaterTech Solutions"
+            },
+            {
+                "device_id": device_id,
+                "power": "520.8W",
+                "voltage": 235.1,
+                "pump_error": "E002",
+                "current": "2.21A",
+                "created_on_date": "2024-01-15 12:15:00",
+                "location": "Pump Station A",
+                "district": "North District",
+                "franchise": "WaterTech Solutions"
+            },
+            {
+                "device_id": device_id,
+                "power": "480.5W",
+                "voltage": 232.0,
+                "pump_error": "NORMAL",
+                "current": "2.05A",
+                "created_on_date": "2024-01-15 13:00:00",
+                "location": "Pump Station A",
+                "district": "North District",
+                "franchise": "WaterTech Solutions"
+            }
+        ]
+        
+        logs.append(f"📝 Created {len(sample_records)} sample records with error codes: E001, E006, E002, NORMAL")
+        for i, record in enumerate(sample_records):
+            logs.append(f"   Record {i+1}: {record['pump_error']} - {record['power']} @ {record['created_on_date']}")
+        
+        # Insert sample records
+        logs.append("💾 Inserting sample records into device_power_logs table...")
+        response = datalake.table("device_power_logs").insert(sample_records).execute()
+        logs.append(f"📊 Insert response: {len(response.data) if response.data else 0} records confirmed")
+        
+        if response.data:
+            logs.append("✅ Sample data creation successful!")
+            return {
+                "success": True,
+                "device_id": device_id,
+                "records_created": len(sample_records),
+                "error_codes_included": ["E001", "E006", "E002", "NORMAL"],
+                "message": f"Created {len(sample_records)} sample records for device {device_id}",
+                "creation_logs": logs,
+                "inserted_data": response.data
+            }
+        else:
+            logs.append("❌ Sample data creation failed - no response data received")
+            return {
+                "success": False,
+                "device_id": device_id,
+                "error": "Failed to create sample data - no response data",
+                "creation_logs": logs
+            }
+            
+    except Exception as e:
+        logs.append(f"💥 Critical error in create_sample_device_data: {str(e)}")
+        return {
+            "success": False,
+            "device_id": device_id,
+            "error": f"Error creating sample data: {str(e)}",
+            "creation_logs": logs
+        }
 
 def query_gemini_agent(agent, question: str):
     """Query the Gemini agent with a question"""
@@ -352,7 +551,12 @@ JOIN public.customer_profile cp ON cp."Device_id" = dpl.device_id;
 
 def render_chat_tab():
     """Render the Dextro AI Chat tab"""
-    st.markdown('<div class="dextro-logo">DEXTRO</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="dextro-logo-container">'
+        '<img src="data:image/png;base64,{}" class="dextro-logo-img" alt="DEXTRO">'
+        '</div>'.format(get_logo_base64()),
+        unsafe_allow_html=True
+    )
     st.markdown("### 🤖 Ask me anything about Dextro!")
     st.markdown("I'm here to help with your IoT device monitoring, power consumption analysis, and data insights.")
     
@@ -402,15 +606,40 @@ def render_chat_tab():
                 You have access to the following tools:
                 1. get_device_power_data(device_id): Fetch device power logs and pump error codes for analysis
                 2. analyze_pump_error_codes(error_codes): Analyze pump error codes and provide meanings/actions
+                3. create_sample_device_data(device_id): Create sample data for testing (use only when requested)
                 
-                When users ask about pump errors or device issues:
-                1. Use get_device_power_data to fetch the device data
-                2. Use analyze_pump_error_codes to interpret any error codes found
-                3. Provide clear explanations of what each error means
-                4. Give specific recommendations for fixing the issues
-                5. Prioritize critical and high-severity errors
+                IMPORTANT INSTRUCTIONS FOR DEVICE ID EXTRACTION:
+                - When users mention device IDs (like "device ID 865198074539541" or "device 123456"), extract the numeric ID
+                - Always use the get_device_power_data tool with the extracted device ID first
+                - If no device ID is mentioned but user asks about pump errors, ask them to specify a device ID
+                - Look for patterns like: "device ID X", "device X", "ID X", or just numbers in context
                 
-                Always be helpful, provide specific technical guidance, and use the tools when appropriate.
+                WORKFLOW FOR PUMP ERROR ANALYSIS:
+                1. Extract the device ID from the user's message (e.g., from "device ID 865198074539541")
+                2. Call get_device_power_data(device_id) with the extracted ID
+                3. ALWAYS display the fetch_logs from the response to show what data was retrieved
+                4. If pump errors are found, call analyze_pump_error_codes(error_codes) with the error list
+                5. Provide detailed analysis including:
+                   - What each error code means
+                   - Recommended actions to fix the issues
+                   - Severity levels (Critical/High priority first)
+                   - Step-by-step troubleshooting guidance
+                
+                IMPORTANT LOGGING REQUIREMENTS:
+                - Always show the "fetch_logs" or "creation_logs" from tool responses
+                - Display the raw data samples when available
+                - Show database query results and record counts
+                - Help users understand what data was found or why no data exists
+                
+                EXAMPLE:
+                User: "Please analyze the pump errors for device ID 865198074539541"
+                You should: 
+                1. get_device_power_data(865198074539541)
+                2. Show the fetch_logs to explain what happened
+                3. Display any records found
+                4. Analyze the pump errors if any exist
+                
+                Always be helpful, provide specific technical guidance, show detailed logs, and use the tools when appropriate.
                 """
                 full_prompt = f"{dextro_context}\n\nUser question: {prompt}"
                 
@@ -452,21 +681,32 @@ def render_chat_tab():
     # Special pump error analysis section
     st.markdown("---")
     st.markdown("**🔧 Pump Error Analysis**")
-    col1, col2 = st.columns([2, 1])
+    col1, col2, col3 = st.columns([2, 1, 1])
     
     with col1:
         device_id_chat = st.number_input("Device ID for Error Analysis:", 
-                                       value=865198076659404, 
+                                       value=123456, 
                                        key="device_id_chat")
     with col2:
         if st.button("🔍 Analyze Pump Errors", key="analyze_pump_errors_btn", type="secondary"):
             error_analysis_question = f"Please analyze the pump errors for device ID {device_id_chat}. Use the get_device_power_data tool to fetch the data and then analyze any error codes found."
             st.session_state.chat_messages.append({"role": "user", "content": error_analysis_question})
             st.rerun()
+    
+    with col3:
+        if st.button("🧪 Create Test Data", key="create_test_data_btn", help="Create sample pump data for testing"):
+            create_data_question = f"Please create sample device power data with pump errors for device ID {device_id_chat} using the create_sample_device_data tool. Then analyze the created error codes."
+            st.session_state.chat_messages.append({"role": "user", "content": create_data_question})
+            st.rerun()
 
 def render_datalake_tab():
     """Render the Dextro DataLake tab"""
-    st.markdown('<div class="dextro-logo">DATA LAKE</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="dextro-logo-container">'
+        '<img src="data:image/png;base64,{}" class="dextro-logo-img" alt="DEXTRO">'
+        '</div>'.format(get_logo_base64()),
+        unsafe_allow_html=True
+    )
     st.markdown("### 📊 Explore your IoT device data and customer insights")
     
     datalake = init_datalake()
@@ -585,7 +825,12 @@ def render_datalake_tab():
 
 def render_settings_tab():
     """Render the Settings tab for configuring error codes"""
-    st.markdown('<div class="dextro-logo">SETTINGS</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="dextro-logo-container">'
+        '<img src="data:image/png;base64,{}" class="dextro-logo-img" alt="DEXTRO">'
+        '</div>'.format(get_logo_base64()),
+        unsafe_allow_html=True
+    )
     st.markdown("### ⚙️ Configure Pump Error Code Guidelines")
     
     # Initialize session state for error code guidelines
