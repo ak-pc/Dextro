@@ -1,3 +1,10 @@
+"""
+Dextro IoT Device Monitoring Platform
+AI-powered analytics for device power consumption and customer insights
+"""
+
+__version__ = "1.0.0"
+
 import streamlit as st
 import pandas as pd
 import os
