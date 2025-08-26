@@ -18,10 +18,55 @@ SUPABASE_URL = "https://uykzmqobbkmthydzymie.supabase.co"
 SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV5a3ptcW9iYmttdGh5ZHp5bWllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYwNzQ2NjYsImV4cCI6MjA3MTY1MDY2Nn0.wpcgIcrEV8kLXLq9_LPC_Z20MlrCmn_HNJX3Ia_dt-I"
 GEMINI_API_KEY = "AIzaSyDhbjIGdcFAOBo4J3XoQaNUS-nCCn2_Gv8"
 
+# Default Pump Error Code Guidelines (configurable via settings)
+DEFAULT_ERROR_CODES = {
+    "E001": {
+        "meaning": "Low Water Pressure",
+        "action": "Check water source connection and prime the pump. Verify inlet valve is fully open.",
+        "severity": "Medium"
+    },
+    "E002": {
+        "meaning": "Motor Overheating",
+        "action": "Allow motor to cool down. Check ventilation and clean air filters. Reduce load if necessary.",
+        "severity": "High"
+    },
+    "E003": {
+        "meaning": "Power Supply Fluctuation",
+        "action": "Check electrical connections and voltage stability. Contact electrician if needed.",
+        "severity": "Medium"
+    },
+    "E004": {
+        "meaning": "Mechanical Blockage",
+        "action": "Stop pump immediately. Clear blockage from impeller and pipes. Check for debris.",
+        "severity": "High"
+    },
+    "E005": {
+        "meaning": "Sensor Malfunction",
+        "action": "Calibrate or replace pressure/flow sensors. Check sensor wiring.",
+        "severity": "Medium"
+    },
+    "E006": {
+        "meaning": "Dry Run Protection",
+        "action": "Ensure adequate water supply. Check for leaks in suction line.",
+        "severity": "Critical"
+    },
+    "E007": {
+        "meaning": "Communication Error",
+        "action": "Check network connection and communication cables. Restart communication module.",
+        "severity": "Low"
+    },
+    "NORMAL": {
+        "meaning": "Normal Operation",
+        "action": "No action required. System operating within normal parameters.",
+        "severity": "None"
+    }
+}
+
 # Import Strands SDK and LiteLLM
 try:
     from strands import Agent
     from strands.models.litellm import LiteLLMModel
+    from strands import tool
     STRANDS_AVAILABLE = True
 except ImportError:
     STRANDS_AVAILABLE = False
@@ -77,13 +122,132 @@ def init_gemini_agent():
             }
         )
         
-        # Create Strands Agent
-        agent = Agent(model=model, tools=[])
+        # Create Strands Agent with tools
+        tools = [get_device_power_data, analyze_pump_error_codes]
+        agent = Agent(model=model, tools=tools)
         return agent
         
     except Exception as e:
         st.error(f"❌ Error initializing AI agent: {str(e)}")
         return None
+
+# Strands Tools for Device Analysis
+@tool
+def get_device_power_data(device_id: int) -> dict:
+    """
+    Fetch device power logs with customer data for a specific device ID.
+    
+    Args:
+        device_id: The device ID to analyze
+        
+    Returns:
+        Dictionary containing device data, customer info, and pump error codes
+    """
+    try:
+        datalake = init_datalake()
+        
+        # Call the existing function
+        joined_data, method = fetch_device_power_logs_with_customer(datalake, device_id)
+        
+        if joined_data:
+            # Extract pump errors from the data
+            pump_errors = []
+            for record in joined_data:
+                if isinstance(record, dict):
+                    # Handle different data structures depending on method
+                    if method == "rpc_function":
+                        device_data = record.get('device_power_logs', {})
+                        pump_error = device_data.get('pump_error', 'NORMAL')
+                    else:
+                        pump_error = record.get('pump_error', 'NORMAL')
+                    
+                    if pump_error and pump_error != 'NORMAL':
+                        pump_errors.append(pump_error)
+            
+            return {
+                "success": True,
+                "device_id": device_id,
+                "total_records": len(joined_data),
+                "pump_errors": pump_errors,
+                "unique_errors": list(set(pump_errors)),
+                "method_used": method,
+                "raw_data": joined_data[:3]  # First 3 records for context
+            }
+        else:
+            return {
+                "success": False,
+                "device_id": device_id,
+                "error": "No data found for this device ID",
+                "pump_errors": [],
+                "unique_errors": []
+            }
+            
+    except Exception as e:
+        return {
+            "success": False,
+            "device_id": device_id,
+            "error": str(e),
+            "pump_errors": [],
+            "unique_errors": []
+        }
+
+@tool  
+def analyze_pump_error_codes(error_codes: list) -> dict:
+    """
+    Analyze pump error codes and provide meanings and recommended actions.
+    
+    Args:
+        error_codes: List of error codes to analyze
+        
+    Returns:
+        Dictionary with analysis of each error code
+    """
+    # Get current error code guidelines (from session state if available, else defaults)
+    if "error_code_guidelines" in st.session_state:
+        guidelines = st.session_state.error_code_guidelines
+    else:
+        guidelines = DEFAULT_ERROR_CODES
+    
+    analysis = {
+        "total_errors": len(error_codes),
+        "unique_errors": len(set(error_codes)),
+        "error_breakdown": {},
+        "severity_summary": {"Critical": 0, "High": 0, "Medium": 0, "Low": 0, "None": 0},
+        "recommendations": []
+    }
+    
+    for error_code in error_codes:
+        if error_code in guidelines:
+            error_info = guidelines[error_code]
+            severity = error_info["severity"]
+            
+            if error_code not in analysis["error_breakdown"]:
+                analysis["error_breakdown"][error_code] = {
+                    "count": 0,
+                    "meaning": error_info["meaning"],
+                    "action": error_info["action"],
+                    "severity": severity
+                }
+            
+            analysis["error_breakdown"][error_code]["count"] += 1
+            analysis["severity_summary"][severity] += 1
+            
+            # Add to recommendations if not already present
+            recommendation = f"**{error_code}**: {error_info['action']}"
+            if recommendation not in analysis["recommendations"]:
+                analysis["recommendations"].append(recommendation)
+        else:
+            # Unknown error code
+            if error_code not in analysis["error_breakdown"]:
+                analysis["error_breakdown"][error_code] = {
+                    "count": 0,
+                    "meaning": "Unknown Error Code",
+                    "action": "Contact technical support for error code definition",
+                    "severity": "Unknown"
+                }
+            analysis["error_breakdown"][error_code]["count"] += 1
+    
+    return analysis
 
 def query_gemini_agent(agent, question: str):
     """Query the Gemini agent with a question"""
@@ -231,10 +395,22 @@ def render_chat_tab():
                 - Power consumption tracking for IoT devices
                 - Customer profile management
                 - Device analytics and insights
+                - Pump error code analysis and diagnostics
                 - Data visualization and reporting
                 - PostgreSQL database queries and optimization
                 
-                Answer questions related to Dextro's capabilities, IoT monitoring, data analysis, and provide helpful insights.
+                You have access to the following tools:
+                1. get_device_power_data(device_id): Fetch device power logs and pump error codes for analysis
+                2. analyze_pump_error_codes(error_codes): Analyze pump error codes and provide meanings/actions
+                
+                When users ask about pump errors or device issues:
+                1. Use get_device_power_data to fetch the device data
+                2. Use analyze_pump_error_codes to interpret any error codes found
+                3. Provide clear explanations of what each error means
+                4. Give specific recommendations for fixing the issues
+                5. Prioritize critical and high-severity errors
+                
+                Always be helpful, provide specific technical guidance, and use the tools when appropriate.
                 """
                 full_prompt = f"{dextro_context}\n\nUser question: {prompt}"
                 
@@ -271,6 +447,21 @@ def render_chat_tab():
         if st.button("⚡ Device Monitoring", key="device_monitoring_btn"):
             quick_question = "Best practices for monitoring IoT device performance and alerts?"
             st.session_state.chat_messages.append({"role": "user", "content": quick_question})
+            st.rerun()
+    
+    # Special pump error analysis section
+    st.markdown("---")
+    st.markdown("**🔧 Pump Error Analysis**")
+    col1, col2 = st.columns([2, 1])
+    
+    with col1:
+        device_id_chat = st.number_input("Device ID for Error Analysis:", 
+                                       value=865198076659404, 
+                                       key="device_id_chat")
+    with col2:
+        if st.button("🔍 Analyze Pump Errors", key="analyze_pump_errors_btn", type="secondary"):
+            error_analysis_question = f"Please analyze the pump errors for device ID {device_id_chat}. Use the get_device_power_data tool to fetch the data and then analyze any error codes found."
+            st.session_state.chat_messages.append({"role": "user", "content": error_analysis_question})
             st.rerun()
 
 def render_datalake_tab():
@@ -392,17 +583,140 @@ def render_datalake_tab():
             else:
                 st.warning("No customer data found.")
 
+def render_settings_tab():
+    """Render the Settings tab for configuring error codes"""
+    st.markdown('<div class="dextro-logo">SETTINGS</div>', unsafe_allow_html=True)
+    st.markdown("### ⚙️ Configure Pump Error Code Guidelines")
+    
+    # Initialize session state for error code guidelines
+    if "error_code_guidelines" not in st.session_state:
+        st.session_state.error_code_guidelines = DEFAULT_ERROR_CODES.copy()
+    
+    st.info("Configure the pump error codes and their meanings that the AI agent will use for analysis.")
+    
+    # Add new error code section
+    st.subheader("➕ Add New Error Code")
+    with st.form("add_error_code"):
+        col1, col2 = st.columns(2)
+        with col1:
+            new_code = st.text_input("Error Code", placeholder="E008")
+            new_meaning = st.text_input("Meaning", placeholder="Temperature Sensor Failure")
+        with col2:
+            new_severity = st.selectbox("Severity", ["Critical", "High", "Medium", "Low", "None"])
+            new_action = st.text_area("Recommended Action", 
+                                    placeholder="Replace temperature sensor and recalibrate system")
+        
+        if st.form_submit_button("Add Error Code", type="primary"):
+            if new_code and new_meaning and new_action:
+                st.session_state.error_code_guidelines[new_code] = {
+                    "meaning": new_meaning,
+                    "action": new_action,
+                    "severity": new_severity
+                }
+                st.success(f"Added error code {new_code}")
+                st.rerun()
+            else:
+                st.error("Please fill in all fields")
+    
+    # Edit existing error codes
+    st.subheader("📝 Existing Error Codes")
+    
+    # Display current error codes in an editable format
+    for error_code, info in st.session_state.error_code_guidelines.items():
+        with st.expander(f"**{error_code}**: {info['meaning']} ({info['severity']})"):
+            col1, col2 = st.columns([3, 1])
+            
+            with col1:
+                updated_meaning = st.text_input(f"Meaning", value=info['meaning'], key=f"meaning_{error_code}")
+                updated_action = st.text_area(f"Action", value=info['action'], key=f"action_{error_code}")
+                updated_severity = st.selectbox(f"Severity", 
+                                              ["Critical", "High", "Medium", "Low", "None"],
+                                              index=["Critical", "High", "Medium", "Low", "None"].index(info['severity']),
+                                              key=f"severity_{error_code}")
+                
+                col_update, col_delete = st.columns(2)
+                with col_update:
+                    if st.button(f"Update {error_code}", key=f"update_{error_code}"):
+                        st.session_state.error_code_guidelines[error_code] = {
+                            "meaning": updated_meaning,
+                            "action": updated_action, 
+                            "severity": updated_severity
+                        }
+                        st.success(f"Updated {error_code}")
+                        st.rerun()
+                
+                with col_delete:
+                    if st.button(f"Delete {error_code}", key=f"delete_{error_code}", type="secondary"):
+                        del st.session_state.error_code_guidelines[error_code]
+                        st.success(f"Deleted {error_code}")
+                        st.rerun()
+    
+    # Reset to defaults
+    st.markdown("---")
+    if st.button("🔄 Reset to Defaults", key="reset_defaults"):
+        st.session_state.error_code_guidelines = DEFAULT_ERROR_CODES.copy()
+        st.success("Reset to default error codes")
+        st.rerun()
+    
+    # Export/Import functionality
+    st.subheader("📤 Export/Import Settings")
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        if st.button("📥 Export Settings", key="export_settings"):
+            import json
+            settings_json = json.dumps(st.session_state.error_code_guidelines, indent=2)
+            st.download_button(
+                label="Download Settings JSON",
+                data=settings_json,
+                file_name="dextro_error_codes.json",
+                mime="application/json",
+                key="download_settings"
+            )
+    
+    with col2:
+        uploaded_file = st.file_uploader("📤 Import Settings", type="json", key="import_settings")
+        if uploaded_file is not None:
+            try:
+                import json
+                imported_settings = json.load(uploaded_file)
+                st.session_state.error_code_guidelines = imported_settings
+                st.success("Settings imported successfully!")
+                st.rerun()
+            except Exception as e:
+                st.error(f"Error importing settings: {str(e)}")
+    
+    # Show current configuration summary
+    st.subheader("📊 Configuration Summary")
+    total_codes = len(st.session_state.error_code_guidelines)
+    severity_counts = {}
+    for code_info in st.session_state.error_code_guidelines.values():
+        severity = code_info['severity']
+        severity_counts[severity] = severity_counts.get(severity, 0) + 1
+    
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric("Total Error Codes", total_codes)
+    with col2:
+        critical_high = severity_counts.get('Critical', 0) + severity_counts.get('High', 0)
+        st.metric("Critical/High Severity", critical_high)
+    with col3:
+        st.metric("Configured Severities", len(severity_counts))
+
 def main():
     """Main application entry point"""
     
     # Create tabs
-    tab1, tab2 = st.tabs(["🤖 Dextro AI Chat", "📊 Dextro DataLake"])
+    tab1, tab2, tab3 = st.tabs(["🤖 Dextro AI Chat", "📊 Dextro DataLake", "⚙️ Settings"])
     
     with tab1:
         render_chat_tab()
     
     with tab2:
         render_datalake_tab()
+        
+    with tab3:
+        render_settings_tab()
     
     # Connection status footer
     st.markdown("---")
