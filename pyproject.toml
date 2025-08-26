@@ -1,0 +1,12 @@
+[tool.hatch.envs.default]
+dependencies = [
+    "streamlit>=1.28.0",
+    "supabase>=2.0.0",
+    "pandas>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "strands-agents[litellm]>=0.1.0",
+    "litellm>=1.0.0",
+]
+
+[tool.hatch.envs.default.scripts]
+dev = "streamlit run app.py"
