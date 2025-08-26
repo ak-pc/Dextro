@@ -13,6 +13,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Configuration Constants
+SUPABASE_URL = "https://uykzmqobbkmthydzymie.supabase.co"
+SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV5a3ptcW9iYmttdGh5ZHp5bWllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYwNzQ2NjYsImV4cCI6MjA3MTY1MDY2Nn0.wpcgIcrEV8kLXLq9_LPC_Z20MlrCmn_HNJX3Ia_dt-I"
+GEMINI_API_KEY = "AIzaSyDhbjIGdcFAOBo4J3XoQaNUS-nCCn2_Gv8"
+
 # Import Strands SDK and LiteLLM
 try:
     from strands import Agent
@@ -51,14 +56,7 @@ st.markdown("""
 @st.cache_resource
 def init_datalake() -> Client:
     """Initialize connection to Dextro DataLake"""
-    url = os.getenv("SUPABASE_URL")
-    key = os.getenv("SUPABASE_ANON_KEY")
-    
-    if not url or not key:
-        st.error("Missing DataLake credentials. Please check your .env file.")
-        st.stop()
-    
-    return create_client(url, key)
+    return create_client(SUPABASE_URL, SUPABASE_ANON_KEY)
 
 @st.cache_resource
 def init_gemini_agent():
@@ -67,15 +65,10 @@ def init_gemini_agent():
         return None
     
     try:
-        gemini_api_key = os.getenv("GEMINI_API_KEY")
-        if not gemini_api_key:
-            st.error("❌ GEMINI_API_KEY not found in environment variables")
-            return None
-        
         # Initialize LiteLLM Model for Gemini
         model = LiteLLMModel(
             client_args={
-                "api_key": gemini_api_key
+                "api_key": GEMINI_API_KEY
             },
             model_id="gemini/gemini-2.0-flash-lite-preview-02-05",
             params={
@@ -414,9 +407,9 @@ def main():
     # Connection status footer
     st.markdown("---")
     with st.expander("🔧 System Status"):
-        st.info(f"**DataLake:** Connected ✅ ({os.getenv('SUPABASE_URL', 'Not configured')})")
-        st.info("**DataLake API Key:** Configured ✅" if os.getenv('SUPABASE_ANON_KEY') else "**DataLake API Key:** Not configured ❌")
-        st.info("**AI Agent:** Configured ✅" if os.getenv('GEMINI_API_KEY') else "**AI Agent:** Not configured ❌")
+        st.info(f"**DataLake:** Connected ✅ ({SUPABASE_URL})")
+        st.info("**DataLake API Key:** Configured ✅")
+        st.info("**AI Agent:** Configured ✅")
         st.info("**Strands SDK:** Available ✅" if STRANDS_AVAILABLE else "**Strands SDK:** Not installed ❌")
 
 if __name__ == "__main__":
