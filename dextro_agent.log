@@ -1225,3 +1225,74 @@ LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemi
 2025-08-27 19:10:27,172 | INFO | ai_agent | Created 10 tools for agent
 2025-08-27 19:10:27,172 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
 2025-08-27 19:10:27,172 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 19:20:14,370 | INFO | ai_agent | Validating configuration...
+2025-08-27 19:20:14,370 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 19:20:14,370 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 19:20:14,430 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 19:20:14,430 | INFO | ai_agent | Preparing tools...
+2025-08-27 19:20:14,430 | INFO | ai_agent | Created 10 tools for agent
+2025-08-27 19:20:14,430 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 19:20:14,490 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 19:26:04,591 | INFO | ai_agent | Validating configuration...
+2025-08-27 19:26:04,592 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 19:26:04,592 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 19:26:04,597 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 19:26:04,597 | INFO | ai_agent | Preparing tools...
+2025-08-27 19:26:04,597 | INFO | ai_agent | Created 10 tools for agent
+2025-08-27 19:26:04,597 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 19:26:04,597 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 19:26:25,330 | INFO | ai_agent | Validating configuration...
+2025-08-27 19:26:25,332 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 19:26:25,333 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 19:26:25,403 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 19:26:25,404 | INFO | ai_agent | Preparing tools...
+2025-08-27 19:26:25,404 | INFO | ai_agent | Created 10 tools for agent
+2025-08-27 19:26:25,404 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 19:26:25,404 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 19:26:39,824 | INFO | ai_agent | Validating configuration...
+2025-08-27 19:26:39,824 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 19:26:39,824 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 19:26:39,895 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 19:26:39,895 | INFO | ai_agent | Preparing tools...
+2025-08-27 19:26:39,895 | INFO | ai_agent | Created 10 tools for agent
+2025-08-27 19:26:39,895 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 19:26:39,895 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 19:30:05,501 | INFO | ai_agent | Validating configuration...
+2025-08-27 19:30:05,501 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 19:30:05,501 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 19:30:05,529 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 19:30:05,529 | INFO | ai_agent | Preparing tools...
+2025-08-27 19:30:05,529 | INFO | ai_agent | Created 10 tools for agent
+2025-08-27 19:30:05,529 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 19:30:05,529 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 19:30:13,310 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 19:30:13,312 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-27 19:30:15,353 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 19:30:16,988 | INFO | agentic_tools | Fetching business performance summary for 20 days
+2025-08-27 19:30:16,989 | INFO | agentic_tools | RPC Parameters: {'p_date_range_days': 20}
+2025-08-27 19:30:16,989 | INFO | agentic_tools | Parameter types: [('p_date_range_days', 'int')]
+2025-08-27 19:30:16,989 | INFO | agentic_tools | Making RPC call to rpc_business_performance_summary
+2025-08-27 19:30:17,003 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-27 19:30:20,329 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_business_performance_summary "HTTP/2 200 OK"
+2025-08-27 19:30:20,334 | INFO | agentic_tools | RPC Response status: data=[{'metric_name': 'new_devices_installed', 'metric_value': 29, 'metric_description': 'Number of new devices installed', 'additional_info': '20 day(s)'}, {'metric_name': 'co2_savings_tonnes', 'metric_value': 232, 'metric_description': 'Annual CO2 savings in tonnes', 'additional_info': 'Environmental impact'}, {'metric_name': 'total_active_devices', 'metric_value': 29, 'metric_description': 'Currently active devices', 'additional_info': 'Fleet status'}, {'metric_name': 'total_water_production', 'metric_value': 5404563866.99, 'metric_description': 'Total litres produced', 'additional_info': 'Water output'}, {'metric_name': 'total_energy_consumption', 'metric_value': 16245923.588195752, 'metric_description': 'Total energy consumption (KWH)', 'additional_info': 'Power usage'}, {'metric_name': 'devices_with_errors', 'metric_value': 28, 'metric_description': 'Devices currently showing errors', 'additional_info': 'Health status'}, {'metric_name': 'operational_devices', 'metric_value': 29, 'metric_description': 'Fully operational devices', 'additional_info': 'Health status'}, {'metric_name': 'fleet_uptime_percent', 'metric_value': 100.0, 'metric_description': 'Overall fleet uptime percentage', 'additional_info': 'Performance metric'}, {'metric_name': 'average_efficiency', 'metric_value': 5.92, 'metric_description': 'Average energy efficiency', 'additional_info': 'KWH per runtime hour'}, {'metric_name': 'top_energy_location', 'metric_value': 7780388.786058493, 'metric_description': 'Highest energy consuming location', 'additional_info': '#N/A'}] count=None
+2025-08-27 19:30:20,334 | INFO | agentic_tools | RPC Response data length: 10
+2025-08-27 19:30:20,335 | INFO | agentic_tools | Stored business performance data in Streamlit session state
+2025-08-27 19:30:22,179 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 19:30:22,955 | INFO | agentic_tools | Fetching comprehensive fleet health overview
+2025-08-27 19:30:23,943 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_fleet_health_overview "HTTP/2 404 Not Found"
+2025-08-27 19:30:23,945 | ERROR | agentic_tools | Error fetching fleet health overview: {'message': 'operator does not exist: text > integer', 'code': '42883', 'hint': 'No operator matches the given name and argument types. You might need to add explicit type casts.', 'details': None}
+2025-08-27 19:30:26,298 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 19:30:27,073 | INFO | agentic_tools | Analyzing critical issues across the fleet
+2025-08-27 19:30:28,243 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_critical_issues_analysis "HTTP/2 200 OK"
+2025-08-27 19:30:28,248 | INFO | agentic_tools | Stored 30 critical issues in session state
+2025-08-27 19:30:29,779 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 19:30:30,747 | INFO | agentic_tools | Analyzing high error devices with threshold: 5
+2025-08-27 19:30:30,747 | INFO | agentic_tools | RPC Parameters: {'p_error_threshold': 5}
+2025-08-27 19:30:30,747 | INFO | agentic_tools | Parameter types: [('p_error_threshold', 'int')]
+2025-08-27 19:30:31,829 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_high_error_devices "HTTP/2 200 OK"
+2025-08-27 19:30:31,833 | INFO | agentic_tools | RPC Response data length: 23
+2025-08-27 19:30:31,837 | INFO | agentic_tools | Stored 23 high error devices in session state
+2025-08-27 19:30:31,871 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.398153 seconds
+2025-08-27 19:30:32,518 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 19:30:32,519 | INFO | anthropic._base_client | Retrying request to /v1/messages in 33.000000 seconds

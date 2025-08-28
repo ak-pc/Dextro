@@ -9,14 +9,11 @@ import streamlit as st
 import pandas as pd
 import os
 from supabase import create_client, Client
-from dotenv import load_dotenv
 
-load_dotenv()
-
-# Configuration Constants
-SUPABASE_URL = "https://uykzmqobbkmthydzymie.supabase.co"
-SUPABASE_BABLA = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV5a3ptcW9iYmttdGh5ZHp5bWllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYwNzQ2NjYsImV4cCI6MjA3MTY1MDY2Nn0.wpcgIcrEV8kLXLq9_LPC_Z20MlrCmn_HNJX3Ia_dt-I"
-CLAUDE_FUN_TIME = "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"
+# Configuration Constants from Streamlit secrets
+SUPABASE_URL = st.secrets["supabase"]["url"]
+SUPABASE_KEY = st.secrets["supabase"]["key"]
+CLAUDE_KEY = st.secrets["anthropic"]["api_key"]
 
 
 # Import AI modules
@@ -110,7 +107,7 @@ def get_logo_base64():
 @st.cache_resource
 def init_datalake() -> Client:
     """Initialize connection to Dextro DataLake"""
-    return create_client(SUPABASE_URL, SUPABASE_BABLA)
+    return create_client(SUPABASE_URL, SUPABASE_KEY)
 
 
 def fetch_customer_profiles(datalake: Client):
@@ -175,7 +172,7 @@ def render_chat_tab():
         st.error("❌ AI capabilities not available. Missing dependencies.")
         return
     
-    claude_agent = init_claude_agent(SUPABASE_URL, SUPABASE_BABLA, CLAUDE_FUN_TIME)
+    claude_agent = init_claude_agent(SUPABASE_URL, SUPABASE_KEY, CLAUDE_KEY)
     if not claude_agent:
         st.error("❌ Failed to initialize AI agent. Check your configuration.")
         return
@@ -566,7 +563,7 @@ COMPLIANCE FOCUS:
     with col1:
         st.info(f"**DataLake:** Connected ✅")
         st.info("**DataLake API Key:** Configured ✅")
-        st.info(f"**DataLake URL:** {SUPABASE_URL}")
+        st.info(f"**DataLake URL:** {SUPABASE_URL[:40]}...")
         
     with col2:
         st.info("**AI Agent:** Configured ✅")
@@ -576,7 +573,7 @@ COMPLIANCE FOCUS:
             st.error("**Strands SDK:** Not installed ❌")
             st.code("pip install 'strands-agents[anthropic]'")
         
-        claude_agent = init_claude_agent(SUPABASE_URL, SUPABASE_BABLA, CLAUDE_FUN_TIME)
+        claude_agent = init_claude_agent(SUPABASE_URL, SUPABASE_KEY, CLAUDE_KEY)
         if claude_agent:
             st.info("**Claude Model:** Connected ✅")
         else:

@@ -41,4 +41,4 @@ streamlit run app.py
 
 The app uses these environment variables (already configured in `.env`):
 - `SUPABASE_URL`: Your Supabase project URL
-- `SUPABASE_BABLA`: Your Supabase anonymous API key
+- `SUPABASE_KEY`: Your Supabase anonymous API key
