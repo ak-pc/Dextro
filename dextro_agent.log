@@ -1,0 +1,1219 @@
+Log cleaned - hardcoded error codes removed
+2025-08-26 16:56:08,301 | INFO | ai_agent | Validating configuration...
+2025-08-26 16:56:08,302 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-26 16:56:08,302 | INFO | ai_agent | Creating LiteLLM model...
+2025-08-26 16:56:08,302 | INFO | ai_agent | LiteLLM model configured: gemini/gemini-2.0-flash-lite-preview-02-05
+2025-08-26 16:56:08,302 | INFO | ai_agent | Preparing tools...
+2025-08-26 16:56:08,302 | INFO | ai_agent | Created 5 tools for agent
+2025-08-26 16:56:08,302 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-26 16:56:08,302 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-26 16:56:13,854 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-26 16:56:13,856 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-26 16:56:13,865 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 16:56:15,212 | INFO | ai_agent | Executing database query on device_power_logs with columns: PumpError, District, Location
+2025-08-26 16:56:15,212 | INFO | ai_agent | Executing database query on device_power_logs with columns: PumpError, District, Location
+2025-08-26 16:56:15,218 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-26 16:56:15,218 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-26 16:56:16,613 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 16:56:18,182 | INFO | ai_agent | Query completed, extracting results...
+2025-08-26 16:56:18,182 | INFO | ai_agent | Response type: <class 'strands.agent.agent_result.AgentResult'>
+2025-08-26 16:56:18,182 | INFO | ai_agent | Response attributes: ['__annotations__', '__class__', '__dataclass_fields__', '__dataclass_params__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__firstlineno__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__match_args__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__replace__', '__repr__', '__setattr__', '__sizeof__', '__static_attributes__', '__str__', '__subclasshook__', '__weakref__', 'message', 'metrics', 'state', 'stop_reason']
+2025-08-26 16:56:18,182 | INFO | ai_agent | Extracted 0 tool results
+2025-08-26 16:56:18,182 | INFO | ai_agent | Looking for token usage in response: <class 'strands.agent.agent_result.AgentResult'>
+2025-08-26 16:56:18,182 | INFO | ai_agent | Found attribute 'metrics': <class 'strands.telemetry.metrics.EventLoopMetrics'> = EventLoopMetrics(cycle_count=2, tool_metrics={'execute_database_query': ToolMetrics(tool={'toolUseId': 'call_71e36b0f63fa40fda7d59eb89e15', 'name': 'execute_database_query', 'input': {'columns': 'PumpError, District, Location', 'filters': {'PumpError': ['0', '9999', 'NORMAL', '']}, 'limit': 500, 'order_by': 'CreatedOnDate.desc', 'table_name': 'device_power_logs'}}, call_count=2, success_count=2, error_count=0, total_time=2.7812907695770264)}, cycle_durations=[1.5675010681152344], traces=[<strands.telemetry.metrics.Trace object at 0x12acd5550>, <strands.telemetry.metrics.Trace object at 0x12a6cd490>], accumulated_usage={'inputTokens': 32881, 'outputTokens': 197, 'totalTokens': 33078}, accumulated_metrics={'latencyMs': 0})
+2025-08-26 16:56:18,182 | INFO | ai_agent | Extracted token usage: {'input_tokens': 32881, 'output_tokens': 197, 'total_tokens': 33078}
+2025-08-26 16:56:18,182 | INFO | ai_agent | Stored 0 tool results and token usage in session
+2025-08-26 17:06:00,208 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-26 17:06:00,214 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 17:06:00,218 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x12acd6660>
+2025-08-26 17:06:00,218 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x12ace0e90>, 850196.740333958)])']
+connector: <aiohttp.connector.TCPConnector object at 0x12acd5e80>
+2025-08-26 17:06:01,471 | INFO | ai_agent | Executing database query on device_power_logs with columns: PumpError, District, Location
+2025-08-26 17:06:03,224 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 17:06:04,652 | INFO | ai_agent | Query completed, extracting results...
+2025-08-26 17:06:04,652 | INFO | ai_agent | Response type: <class 'strands.agent.agent_result.AgentResult'>
+2025-08-26 17:06:04,653 | INFO | ai_agent | Response attributes: ['__annotations__', '__class__', '__dataclass_fields__', '__dataclass_params__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__firstlineno__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__match_args__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__replace__', '__repr__', '__setattr__', '__sizeof__', '__static_attributes__', '__str__', '__subclasshook__', '__weakref__', 'message', 'metrics', 'state', 'stop_reason']
+2025-08-26 17:06:04,653 | INFO | ai_agent | Extracted 0 tool results
+2025-08-26 17:06:04,653 | INFO | ai_agent | Looking for token usage in response: <class 'strands.agent.agent_result.AgentResult'>
+2025-08-26 17:06:04,653 | INFO | ai_agent | Found attribute 'metrics': <class 'strands.telemetry.metrics.EventLoopMetrics'> = EventLoopMetrics(cycle_count=4, tool_metrics={'execute_database_query': ToolMetrics(tool={'toolUseId': 'call_739313eeabf84217bcd358facbc6', 'name': 'execute_database_query', 'input': {'order_by': 'CreatedOnDate.desc', 'columns': 'PumpError, District, Location', 'limit': 500, 'table_name': 'device_power_logs', 'filters': {'PumpError': ['0', '9999', 'NORMAL', '']}}}, call_count=3, success_count=3, error_count=0, total_time=4.52866268157959)}, cycle_durations=[1.5675010681152344, 1.4280219078063965], traces=[<strands.telemetry.metrics.Trace object at 0x12acd5550>, <strands.telemetry.metrics.Trace object at 0x12a6cd490>, <strands.telemetry.metrics.Trace object at 0x12a6bfac0>, <strands.telemetry.metrics.Trace object at 0x12ac67020>], accumulated_usage={'inputTokens': 108916, 'outputTokens': 355, 'totalTokens': 109271}, accumulated_metrics={'latencyMs': 0})
+2025-08-26 17:06:04,653 | INFO | ai_agent | Extracted token usage: {'input_tokens': 108916, 'output_tokens': 355, 'total_tokens': 109271}
+2025-08-26 17:06:04,653 | INFO | ai_agent | Stored 0 tool results and token usage in session
+2025-08-26 17:14:01,356 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-26 17:14:01,363 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 17:14:01,366 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x12acd8910>
+2025-08-26 17:14:01,367 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x12ace2930>, 850783.215528125)])']
+connector: <aiohttp.connector.TCPConnector object at 0x12acd87d0>
+2025-08-26 17:14:02,874 | INFO | ai_agent | Executing database query on device_power_logs with columns: PumpError, District, Location
+2025-08-26 17:14:04,671 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 17:14:06,197 | INFO | ai_agent | Query completed, extracting results...
+2025-08-26 17:14:06,197 | INFO | ai_agent | Response type: <class 'strands.agent.agent_result.AgentResult'>
+2025-08-26 17:14:06,197 | INFO | ai_agent | Response attributes: ['__annotations__', '__class__', '__dataclass_fields__', '__dataclass_params__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__firstlineno__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__match_args__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__replace__', '__repr__', '__setattr__', '__sizeof__', '__static_attributes__', '__str__', '__subclasshook__', '__weakref__', 'message', 'metrics', 'state', 'stop_reason']
+2025-08-26 17:14:06,197 | INFO | ai_agent | Extracted 0 tool results
+2025-08-26 17:14:06,197 | INFO | ai_agent | Looking for token usage in response: <class 'strands.agent.agent_result.AgentResult'>
+2025-08-26 17:14:06,198 | INFO | ai_agent | Found attribute 'metrics': <class 'strands.telemetry.metrics.EventLoopMetrics'> = EventLoopMetrics(cycle_count=6, tool_metrics={'execute_database_query': ToolMetrics(tool={'toolUseId': 'call_97419eff27e94731890723125ba2', 'name': 'execute_database_query', 'input': {'table_name': 'device_power_logs', 'columns': 'PumpError, District, Location', 'filters': {'PumpError': ['0', '9999', 'NORMAL', '']}, 'order_by': 'CreatedOnDate.desc', 'limit': 500}}, call_count=4, success_count=4, error_count=0, total_time=6.319742679595947)}, cycle_durations=[1.5675010681152344, 1.4280219078063965, 1.5254600048065186], traces=[<strands.telemetry.metrics.Trace object at 0x12acd5550>, <strands.telemetry.metrics.Trace object at 0x12a6cd490>, <strands.telemetry.metrics.Trace object at 0x12a6bfac0>, <strands.telemetry.metrics.Trace object at 0x12ac67020>, <strands.telemetry.metrics.Trace object at 0x12ab70e50>, <strands.telemetry.metrics.Trace object at 0x12ac2fe30>], accumulated_usage={'inputTokens': 214160, 'outputTokens': 513, 'totalTokens': 214673}, accumulated_metrics={'latencyMs': 0})
+2025-08-26 17:14:06,198 | INFO | ai_agent | Extracted token usage: {'input_tokens': 214160, 'output_tokens': 513, 'total_tokens': 214673}
+2025-08-26 17:14:06,198 | INFO | ai_agent | Stored 0 tool results and token usage in session
+2025-08-26 17:14:15,520 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x12acd9310>
+2025-08-26 17:14:15,521 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x12ace2090>, 851264.761970125)])']
+connector: <aiohttp.connector.TCPConnector object at 0x109a77890>
+2025-08-26 17:14:23,275 | INFO | ai_agent | Validating configuration...
+2025-08-26 17:14:23,275 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-26 17:14:23,275 | INFO | ai_agent | Creating LiteLLM model...
+2025-08-26 17:14:23,275 | INFO | ai_agent | LiteLLM model configured: gemini/gemini-2.0-flash-lite-preview-02-05
+2025-08-26 17:14:23,275 | INFO | ai_agent | Preparing tools...
+2025-08-26 17:14:23,275 | INFO | ai_agent | Created 5 tools for agent
+2025-08-26 17:14:23,275 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-26 17:14:23,275 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-26 17:14:25,034 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-26 17:14:25,035 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-26 17:14:25,044 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 17:14:28,241 | INFO | ai_agent | Executing database query on device_power_logs with columns: PumpError, District, Location
+2025-08-26 17:14:28,241 | INFO | ai_agent | Executing database query on device_power_logs with columns: PumpError, District, Location
+2025-08-26 17:14:28,241 | INFO | ai_agent | Executing database query on device_power_logs with columns: PumpError, District, Location
+2025-08-26 17:14:28,242 | INFO | ai_agent | Executing database query on device_power_logs with columns: PumpError, District, Location
+2025-08-26 17:14:28,243 | INFO | ai_agent | Executing database query on device_power_logs with columns: PumpError, District, Location
+2025-08-26 17:14:28,244 | INFO | ai_agent | Executing database query on device_power_logs with columns: PumpError, District, Location
+2025-08-26 17:14:28,245 | INFO | ai_agent | Executing database query on device_power_logs with columns: PumpError, District, Location
+2025-08-26 17:14:28,245 | INFO | ai_agent | Executing database query on device_power_logs with columns: PumpError, District, Location
+2025-08-26 17:14:28,253 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-26 17:14:28,253 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-26 17:14:28,254 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-26 17:14:28,254 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-26 17:14:28,254 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-26 17:14:28,255 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-26 17:14:28,256 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-26 17:14:28,257 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-26 17:14:29,512 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 17:14:34,828 | INFO | ai_agent | Query completed, extracting results...
+2025-08-26 17:14:34,829 | INFO | ai_agent | Response type: <class 'strands.agent.agent_result.AgentResult'>
+2025-08-26 17:14:34,829 | INFO | ai_agent | Response attributes: ['__annotations__', '__class__', '__dataclass_fields__', '__dataclass_params__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__firstlineno__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__match_args__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__replace__', '__repr__', '__setattr__', '__sizeof__', '__static_attributes__', '__str__', '__subclasshook__', '__weakref__', 'message', 'metrics', 'state', 'stop_reason']
+2025-08-26 17:14:34,829 | INFO | ai_agent | Extracted 0 tool results
+2025-08-26 17:14:34,829 | INFO | ai_agent | Looking for token usage in response: <class 'strands.agent.agent_result.AgentResult'>
+2025-08-26 17:14:34,829 | INFO | ai_agent | Found attribute 'metrics': <class 'strands.telemetry.metrics.EventLoopMetrics'> = EventLoopMetrics(cycle_count=2, tool_metrics={'execute_database_query': ToolMetrics(tool={'toolUseId': 'call_9213977ef9b74c3ca132a352cc16', 'name': 'execute_database_query', 'input': {'columns': 'PumpError, District, Location', 'table_name': 'device_power_logs', 'limit': 500, 'filters': {'PumpError': ['0', '9999', 'NORMAL', '']}, 'order_by': 'District'}}, call_count=8, success_count=8, error_count=0, total_time=9.674020290374756)}, cycle_durations=[5.315944194793701], traces=[<strands.telemetry.metrics.Trace object at 0x138fd4980>, <strands.telemetry.metrics.Trace object at 0x138f46300>], accumulated_usage={'inputTokens': 108862, 'outputTokens': 1508, 'totalTokens': 110370}, accumulated_metrics={'latencyMs': 0})
+2025-08-26 17:14:34,829 | INFO | ai_agent | Extracted token usage: {'input_tokens': 108862, 'output_tokens': 1508, 'total_tokens': 110370}
+2025-08-26 17:14:34,829 | INFO | ai_agent | Stored 0 tool results and token usage in session
+2025-08-26 17:23:52,768 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x138fd5a90>
+2025-08-26 17:23:52,770 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x138fd8cb0>, 851293.389803166)])']
+connector: <aiohttp.connector.TCPConnector object at 0x138fd52b0>
+2025-08-26 17:23:59,551 | INFO | ai_agent | Validating configuration...
+2025-08-26 17:23:59,551 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-26 17:23:59,551 | INFO | ai_agent | Creating LiteLLM model...
+2025-08-26 17:23:59,551 | INFO | ai_agent | LiteLLM model configured: gemini/gemini-2.0-flash-lite-preview-02-05
+2025-08-26 17:23:59,551 | INFO | ai_agent | Preparing tools...
+2025-08-26 17:23:59,551 | INFO | ai_agent | Created 5 tools for agent
+2025-08-26 17:23:59,551 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-26 17:23:59,551 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-26 17:24:07,962 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-26 17:24:07,963 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-26 17:24:07,972 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 17:24:10,317 | INFO | ai_agent | Query completed, extracting results...
+2025-08-26 17:24:10,317 | INFO | ai_agent | Response type: <class 'strands.agent.agent_result.AgentResult'>
+2025-08-26 17:24:10,317 | INFO | ai_agent | Response attributes: ['__annotations__', '__class__', '__dataclass_fields__', '__dataclass_params__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__firstlineno__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__match_args__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__replace__', '__repr__', '__setattr__', '__sizeof__', '__static_attributes__', '__str__', '__subclasshook__', '__weakref__', 'message', 'metrics', 'state', 'stop_reason']
+2025-08-26 17:24:10,317 | INFO | ai_agent | Extracted 0 tool results
+2025-08-26 17:24:10,318 | INFO | ai_agent | Looking for token usage in response: <class 'strands.agent.agent_result.AgentResult'>
+2025-08-26 17:24:10,318 | INFO | ai_agent | Found attribute 'metrics': <class 'strands.telemetry.metrics.EventLoopMetrics'> = EventLoopMetrics(cycle_count=1, tool_metrics={}, cycle_durations=[2.3504638671875], traces=[<strands.telemetry.metrics.Trace object at 0x1422b1010>], accumulated_usage={'inputTokens': 2490, 'outputTokens': 261, 'totalTokens': 2751}, accumulated_metrics={'latencyMs': 0})
+2025-08-26 17:24:10,318 | INFO | ai_agent | Extracted token usage: {'input_tokens': 2490, 'output_tokens': 261, 'total_tokens': 2751}
+2025-08-26 17:24:10,318 | INFO | ai_agent | Stored 0 tool results and token usage in session
+2025-08-26 17:24:37,097 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-26 17:24:37,101 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 17:24:37,104 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x1422b2120>
+2025-08-26 17:24:37,105 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x1422e0e30>, 851868.837793333)])']
+connector: <aiohttp.connector.TCPConnector object at 0x1422b1940>
+2025-08-26 17:24:38,127 | INFO | ai_agent | Query completed, extracting results...
+2025-08-26 17:24:38,127 | INFO | ai_agent | Response type: <class 'strands.agent.agent_result.AgentResult'>
+2025-08-26 17:24:38,127 | INFO | ai_agent | Response attributes: ['__annotations__', '__class__', '__dataclass_fields__', '__dataclass_params__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__firstlineno__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__match_args__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__replace__', '__repr__', '__setattr__', '__sizeof__', '__static_attributes__', '__str__', '__subclasshook__', '__weakref__', 'message', 'metrics', 'state', 'stop_reason']
+2025-08-26 17:24:38,127 | INFO | ai_agent | Extracted 0 tool results
+2025-08-26 17:24:38,127 | INFO | ai_agent | Looking for token usage in response: <class 'strands.agent.agent_result.AgentResult'>
+2025-08-26 17:24:38,127 | INFO | ai_agent | Found attribute 'metrics': <class 'strands.telemetry.metrics.EventLoopMetrics'> = EventLoopMetrics(cycle_count=2, tool_metrics={}, cycle_durations=[2.3504638671875, 1.025597095489502], traces=[<strands.telemetry.metrics.Trace object at 0x1422b1010>, <strands.telemetry.metrics.Trace object at 0x1422aee90>], accumulated_usage={'inputTokens': 5787, 'outputTokens': 303, 'totalTokens': 6090}, accumulated_metrics={'latencyMs': 0})
+2025-08-26 17:24:38,127 | INFO | ai_agent | Extracted token usage: {'input_tokens': 5787, 'output_tokens': 303, 'total_tokens': 6090}
+2025-08-26 17:24:38,127 | INFO | ai_agent | Stored 0 tool results and token usage in session
+2025-08-26 17:25:00,406 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x1422af750>
+2025-08-26 17:25:00,407 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x1422e1910>, 851896.655301041)])']
+connector: <aiohttp.connector.TCPConnector object at 0x1422aed50>
+2025-08-26 17:35:25,199 | INFO | ai_agent | Validating configuration...
+2025-08-26 17:35:25,199 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-26 17:35:25,199 | INFO | ai_agent | Creating LiteLLM model...
+2025-08-26 17:35:25,199 | INFO | ai_agent | LiteLLM model configured: gemini/gemini-2.0-flash-lite-preview-02-05
+2025-08-26 17:35:25,199 | INFO | ai_agent | Preparing tools...
+2025-08-26 17:35:25,199 | INFO | ai_agent | Created 5 tools for agent
+2025-08-26 17:35:25,199 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-26 17:35:25,200 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-26 17:35:31,533 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-26 17:35:31,535 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-26 17:35:31,544 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 17:35:32,552 | INFO | ai_agent | Performing system health monitoring
+2025-08-26 17:35:32,564 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-26 17:35:34,828 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 17:35:37,206 | INFO | ai_agent | Query completed, extracting results...
+2025-08-26 17:35:37,206 | INFO | ai_agent | Response type: <class 'strands.agent.agent_result.AgentResult'>
+2025-08-26 17:35:37,206 | INFO | ai_agent | Response attributes: ['__annotations__', '__class__', '__dataclass_fields__', '__dataclass_params__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__firstlineno__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__match_args__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__replace__', '__repr__', '__setattr__', '__sizeof__', '__static_attributes__', '__str__', '__subclasshook__', '__weakref__', 'message', 'metrics', 'state', 'stop_reason']
+2025-08-26 17:35:37,206 | INFO | ai_agent | Extracted 0 tool results
+2025-08-26 17:35:37,206 | INFO | ai_agent | Looking for token usage in response: <class 'strands.agent.agent_result.AgentResult'>
+2025-08-26 17:35:37,206 | INFO | ai_agent | Found attribute 'metrics': <class 'strands.telemetry.metrics.EventLoopMetrics'> = EventLoopMetrics(cycle_count=2, tool_metrics={'monitor_system_health': ToolMetrics(tool={'toolUseId': 'call_ff81d07f987d43ab878aa17999fd', 'name': 'monitor_system_health', 'input': {}}, call_count=1, success_count=1, error_count=0, total_time=2.274461030960083)}, cycle_durations=[2.3750052452087402], traces=[<strands.telemetry.metrics.Trace object at 0x1378a1010>, <strands.telemetry.metrics.Trace object at 0x1378d1480>], accumulated_usage={'inputTokens': 5528, 'outputTokens': 271, 'totalTokens': 5799}, accumulated_metrics={'latencyMs': 0})
+2025-08-26 17:35:37,206 | INFO | ai_agent | Extracted token usage: {'input_tokens': 5528, 'output_tokens': 271, 'total_tokens': 5799}
+2025-08-26 17:35:37,206 | INFO | ai_agent | Stored 0 tool results and token usage in session
+2025-08-26 17:49:41,252 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x1378a2120>
+2025-08-26 17:49:41,253 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x13787c530>, 852555.727706666)])']
+connector: <aiohttp.connector.TCPConnector object at 0x1378a1940>
+2025-08-26 17:49:46,920 | INFO | ai_agent | Validating configuration...
+2025-08-26 17:49:46,920 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-26 17:49:46,920 | INFO | ai_agent | Creating LiteLLM model...
+2025-08-26 17:49:46,920 | INFO | ai_agent | LiteLLM model configured: gemini/gemini-2.0-flash-lite-preview-02-05
+2025-08-26 17:49:46,920 | INFO | ai_agent | Preparing tools...
+2025-08-26 17:49:46,920 | INFO | ai_agent | Created 5 tools for agent
+2025-08-26 17:49:46,920 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-26 17:49:46,920 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-26 17:49:54,002 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-26 17:49:54,003 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-26 17:49:54,012 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 17:49:55,126 | INFO | ai_agent | Performing system health monitoring
+2025-08-26 17:49:55,134 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-26 17:49:57,248 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 17:49:58,886 | INFO | ai_agent | Query completed, extracting results...
+2025-08-26 17:49:58,886 | INFO | ai_agent | Response type: <class 'strands.agent.agent_result.AgentResult'>
+2025-08-26 17:49:58,886 | INFO | ai_agent | Response attributes: ['__annotations__', '__class__', '__dataclass_fields__', '__dataclass_params__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__firstlineno__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__match_args__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__replace__', '__repr__', '__setattr__', '__sizeof__', '__static_attributes__', '__str__', '__subclasshook__', '__weakref__', 'message', 'metrics', 'state', 'stop_reason']
+2025-08-26 17:49:58,886 | INFO | ai_agent | Extracted 0 tool results
+2025-08-26 17:49:58,886 | INFO | ai_agent | Looking for token usage in response: <class 'strands.agent.agent_result.AgentResult'>
+2025-08-26 17:49:58,887 | INFO | ai_agent | Found attribute 'metrics': <class 'strands.telemetry.metrics.EventLoopMetrics'> = EventLoopMetrics(cycle_count=2, tool_metrics={'monitor_system_health': ToolMetrics(tool={'toolUseId': 'call_5e2a400b7dc642d499f07b81c816', 'name': 'monitor_system_health', 'input': {}}, call_count=1, success_count=1, error_count=0, total_time=2.1207730770111084)}, cycle_durations=[1.6358351707458496], traces=[<strands.telemetry.metrics.Trace object at 0x12ebd5010>, <strands.telemetry.metrics.Trace object at 0x12ebd9940>], accumulated_usage={'inputTokens': 5528, 'outputTokens': 160, 'totalTokens': 5688}, accumulated_metrics={'latencyMs': 0})
+2025-08-26 17:49:58,887 | INFO | ai_agent | Extracted token usage: {'input_tokens': 5528, 'output_tokens': 160, 'total_tokens': 5688}
+2025-08-26 17:49:58,887 | INFO | ai_agent | Stored 0 tool results and token usage in session
+2025-08-26 17:51:45,657 | INFO | ai_agent | Validating configuration...
+2025-08-26 17:51:45,657 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-26 17:51:45,657 | INFO | ai_agent | Creating LiteLLM model...
+2025-08-26 17:51:45,657 | INFO | ai_agent | LiteLLM model configured: gemini/gemini-2.0-flash-lite-preview-02-05
+2025-08-26 17:51:45,657 | INFO | ai_agent | Preparing tools...
+2025-08-26 17:51:45,657 | INFO | ai_agent | Created 5 tools for agent
+2025-08-26 17:51:45,657 | INFO | ai_agent | Initializing Strands Agent with CapturingCallbackHandler...
+2025-08-26 17:51:45,658 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-26 17:51:45,708 | INFO | ai_agent | Validating configuration...
+2025-08-26 17:51:45,709 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-26 17:51:45,709 | INFO | ai_agent | Creating LiteLLM model...
+2025-08-26 17:51:45,709 | INFO | ai_agent | LiteLLM model configured: gemini/gemini-2.0-flash-lite-preview-02-05
+2025-08-26 17:51:45,709 | INFO | ai_agent | Preparing tools...
+2025-08-26 17:51:45,709 | INFO | ai_agent | Created 5 tools for agent
+2025-08-26 17:51:45,709 | INFO | ai_agent | Initializing Strands Agent with CapturingCallbackHandler...
+2025-08-26 17:51:45,709 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-26 17:52:57,884 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x12ebd6120>
+2025-08-26 17:52:57,885 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x12ea688f0>, 853380.347775208)])']
+connector: <aiohttp.connector.TCPConnector object at 0x12ebd5940>
+2025-08-26 17:53:04,439 | INFO | ai_agent | Validating configuration...
+2025-08-26 17:53:04,439 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-26 17:53:04,439 | INFO | ai_agent | Creating LiteLLM model...
+2025-08-26 17:53:04,439 | INFO | ai_agent | LiteLLM model configured: gemini/gemini-2.0-flash-lite-preview-02-05
+2025-08-26 17:53:04,439 | INFO | ai_agent | Preparing tools...
+2025-08-26 17:53:04,439 | INFO | ai_agent | Created 5 tools for agent
+2025-08-26 17:53:04,439 | INFO | ai_agent | Initializing Strands Agent with CapturingCallbackHandler...
+2025-08-26 17:53:04,439 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-26 17:53:10,980 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-26 17:53:10,982 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-26 17:53:10,990 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 17:53:11,940 | INFO | ai_agent | Performing system health monitoring
+2025-08-26 17:53:11,951 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-26 17:53:13,789 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 17:53:16,527 | INFO | ai_agent | Query completed, extracting results...
+2025-08-26 17:53:16,527 | INFO | ai_agent | Extracted 0 tool results from callback handler
+2025-08-26 17:53:16,527 | INFO | ai_agent | Looking for token usage in response: <class 'strands.agent.agent_result.AgentResult'>
+2025-08-26 17:53:16,527 | INFO | ai_agent | Found attribute 'metrics': <class 'strands.telemetry.metrics.EventLoopMetrics'> = EventLoopMetrics(cycle_count=2, tool_metrics={'monitor_system_health': ToolMetrics(tool={'toolUseId': 'call_ebde591391294dddb0f79feab3c5', 'name': 'monitor_system_health', 'input': {}}, call_count=1, success_count=1, error_count=0, total_time=1.8485820293426514)}, cycle_durations=[2.7336809635162354], traces=[<strands.telemetry.metrics.Trace object at 0x1330e4ec0>, <strands.telemetry.metrics.Trace object at 0x1330e9940>], accumulated_usage={'inputTokens': 5528, 'outputTokens': 352, 'totalTokens': 5880}, accumulated_metrics={'latencyMs': 0})
+2025-08-26 17:53:16,527 | INFO | ai_agent | Extracted token usage: {'input_tokens': 5528, 'output_tokens': 352, 'total_tokens': 5880}
+2025-08-26 17:53:16,528 | INFO | ai_agent | Stored 0 tool results and token usage in session
+2025-08-26 18:10:52,184 | INFO | ai_agent | Validating configuration...
+2025-08-26 18:10:52,184 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-26 18:10:52,184 | INFO | ai_agent | Creating LiteLLM model...
+2025-08-26 18:10:52,185 | INFO | ai_agent | LiteLLM model configured: gemini/gemini-2.0-flash-lite-preview-02-05
+2025-08-26 18:10:52,185 | INFO | ai_agent | Preparing tools...
+2025-08-26 18:10:52,185 | INFO | ai_agent | Created 5 tools for agent
+2025-08-26 18:10:52,185 | INFO | ai_agent | Initializing Strands Agent with CaptureCallbackHandler...
+2025-08-26 18:10:52,185 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-26 18:10:52,237 | INFO | ai_agent | Validating configuration...
+2025-08-26 18:10:52,240 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-26 18:10:52,241 | INFO | ai_agent | Creating LiteLLM model...
+2025-08-26 18:10:52,241 | INFO | ai_agent | LiteLLM model configured: gemini/gemini-2.0-flash-lite-preview-02-05
+2025-08-26 18:10:52,241 | INFO | ai_agent | Preparing tools...
+2025-08-26 18:10:52,241 | INFO | ai_agent | Created 5 tools for agent
+2025-08-26 18:10:52,242 | INFO | ai_agent | Initializing Strands Agent with CaptureCallbackHandler...
+2025-08-26 18:10:52,344 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-26 18:12:06,088 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x1330e5fd0>
+2025-08-26 18:12:06,088 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x1330ad1f0>, 853577.987555333)])']
+connector: <aiohttp.connector.TCPConnector object at 0x1330e57f0>
+2025-08-26 18:12:11,841 | INFO | ai_agent | Validating configuration...
+2025-08-26 18:12:11,841 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-26 18:12:11,841 | INFO | ai_agent | Creating LiteLLM model...
+2025-08-26 18:12:11,841 | INFO | ai_agent | LiteLLM model configured: gemini/gemini-2.0-flash-lite-preview-02-05
+2025-08-26 18:12:11,841 | INFO | ai_agent | Preparing tools...
+2025-08-26 18:12:11,841 | INFO | ai_agent | Created 5 tools for agent
+2025-08-26 18:12:11,841 | INFO | ai_agent | Initializing Strands Agent with CaptureCallbackHandler...
+2025-08-26 18:12:11,841 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-26 18:12:18,407 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-26 18:12:18,408 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-26 18:12:18,416 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 18:12:19,160 | INFO | ai_agent | Performing system health monitoring
+2025-08-26 18:12:19,171 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-26 18:12:21,380 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 18:12:23,187 | INFO | ai_agent | Query completed, extracting results...
+2025-08-26 18:12:23,187 | INFO | ai_agent | Extracted 1 tool results from callback handler
+2025-08-26 18:12:23,187 | INFO | ai_agent | Stored 1 tool results and token usage in session
+2025-08-26 18:27:06,668 | INFO | ai_agent | Validating configuration...
+2025-08-26 18:27:06,668 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-26 18:27:06,668 | INFO | ai_agent | Creating LiteLLM model...
+2025-08-26 18:27:06,668 | INFO | ai_agent | LiteLLM model configured: gemini/gemini-2.0-flash-lite-preview-02-05
+2025-08-26 18:27:06,668 | INFO | ai_agent | Preparing tools...
+2025-08-26 18:27:06,668 | INFO | ai_agent | Created 5 tools for agent
+2025-08-26 18:27:06,668 | INFO | ai_agent | Initializing Strands Agent with CaptureCallbackHandler...
+2025-08-26 18:27:06,668 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-26 18:27:14,201 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-26 18:27:14,203 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-26 18:27:14,210 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 18:27:15,111 | INFO | ai_agent | Performing system health monitoring
+2025-08-26 18:27:15,122 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-26 18:27:17,290 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 18:27:19,552 | INFO | ai_agent | Query completed, extracting results...
+2025-08-26 18:27:19,553 | INFO | ai_agent | Extracted 1 tool results from callback handler
+2025-08-26 18:27:19,553 | INFO | ai_agent | Stored 1 tool results and token usage in session
+2025-08-26 18:49:33,271 | INFO | ai_agent | Validating configuration...
+2025-08-26 18:49:33,271 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-26 18:49:33,271 | INFO | ai_agent | Creating LiteLLM model...
+2025-08-26 18:49:33,271 | INFO | ai_agent | LiteLLM model configured: gemini/gemini-2.0-flash-lite-preview-02-05
+2025-08-26 18:49:33,271 | INFO | ai_agent | Preparing tools...
+2025-08-26 18:49:33,271 | INFO | ai_agent | Created 5 tools for agent
+2025-08-26 18:49:33,271 | INFO | ai_agent | Initializing Strands Agent with CaptureCallbackHandler...
+2025-08-26 18:49:33,271 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-26 18:49:48,219 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-26 18:49:48,220 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-26 18:49:48,228 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 18:49:49,172 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 18:49:49,974 | INFO | ai_agent | Query completed, extracting results...
+2025-08-26 18:49:49,974 | INFO | ai_agent | Extracted 1 tool results from callback handler
+2025-08-26 18:49:49,974 | INFO | ai_agent | Stored 1 tool results and token usage in session
+2025-08-26 18:50:15,399 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x124cce270>
+2025-08-26 18:50:15,399 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x124cbb830>, 855744.504494041)])']
+connector: <aiohttp.connector.TCPConnector object at 0x124ccda90>
+2025-08-26 18:50:28,600 | INFO | ai_agent | Validating configuration...
+2025-08-26 18:50:28,600 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-26 18:50:28,600 | INFO | ai_agent | Creating LiteLLM model...
+2025-08-26 18:50:28,600 | INFO | ai_agent | LiteLLM model configured: gemini/gemini-2.0-flash-lite-preview-02-05
+2025-08-26 18:50:28,600 | INFO | ai_agent | Preparing tools...
+2025-08-26 18:50:28,601 | INFO | ai_agent | Created 5 tools for agent
+2025-08-26 18:50:28,601 | INFO | ai_agent | Initializing Strands Agent with CaptureCallbackHandler...
+2025-08-26 18:50:28,601 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-26 18:50:30,177 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-26 18:50:30,179 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-26 18:50:30,187 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 18:50:31,117 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 18:50:32,427 | INFO | ai_agent | Executing database query on device_power_logs with columns: District, PumpError, device_id
+2025-08-26 18:50:32,437 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-26 18:50:33,748 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 18:50:36,401 | INFO | ai_agent | Query completed, extracting results...
+2025-08-26 18:50:36,401 | INFO | ai_agent | Extracted 2 tool results from callback handler
+2025-08-26 18:50:36,401 | INFO | ai_agent | Stored 2 tool results and token usage in session
+2025-08-26 18:51:52,790 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x16f666270>
+2025-08-26 18:51:52,791 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x16f653d10>, 855790.930192291)])']
+connector: <aiohttp.connector.TCPConnector object at 0x16f665a90>
+2025-08-26 18:52:06,730 | INFO | ai_agent | Validating configuration...
+2025-08-26 18:52:06,730 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-26 18:52:06,730 | INFO | ai_agent | Creating LiteLLM model...
+2025-08-26 18:52:06,731 | INFO | ai_agent | LiteLLM model configured: gemini/gemini-2.0-flash-lite-preview-02-05
+2025-08-26 18:52:06,731 | INFO | ai_agent | Preparing tools...
+2025-08-26 18:52:06,731 | INFO | ai_agent | Created 5 tools for agent
+2025-08-26 18:52:06,731 | INFO | ai_agent | Initializing Strands Agent with CaptureCallbackHandler...
+2025-08-26 18:52:06,731 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-26 18:52:08,408 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-26 18:52:08,409 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-26 18:52:08,416 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 18:52:09,288 | INFO | ai_agent | Performing system health monitoring
+2025-08-26 18:52:09,299 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-26 18:52:11,584 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 18:52:12,728 | INFO | ai_agent | Query completed, extracting results...
+2025-08-26 18:52:12,729 | INFO | ai_agent | Extracted 1 tool results from callback handler
+2025-08-26 18:52:12,729 | INFO | ai_agent | Stored 1 tool results and token usage in session
+2025-08-26 18:52:29,675 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-26 18:52:29,680 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 18:52:29,687 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x14960e270>
+2025-08-26 18:52:29,687 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x1495bcb30>, 855887.260793833)])']
+connector: <aiohttp.connector.TCPConnector object at 0x14960da90>
+2025-08-26 18:52:31,083 | INFO | ai_agent | Executing database query on device_power_logs with columns: Location, District, PumpError
+2025-08-26 18:52:32,324 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 18:52:35,405 | INFO | ai_agent | Query completed, extracting results...
+2025-08-26 18:52:35,405 | INFO | ai_agent | Extracted 2 tool results from callback handler
+2025-08-26 18:52:35,405 | INFO | ai_agent | Stored 2 tool results and token usage in session
+2025-08-26 18:53:31,290 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-26 18:53:31,295 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 18:53:31,301 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x149536e90>
+2025-08-26 18:53:31,301 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x1495be090>, 855909.935234375)])']
+connector: <aiohttp.connector.TCPConnector object at 0x1490f60d0>
+2025-08-26 18:53:32,374 | INFO | ai_agent | Fetching device data - device_id: 865198074539541, date: 2025-08-21
+2025-08-26 18:53:34,440 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 18:53:36,390 | INFO | ai_agent | Query completed, extracting results...
+2025-08-26 18:53:36,391 | INFO | ai_agent | Extracted 3 tool results from callback handler
+2025-08-26 18:53:36,391 | INFO | ai_agent | Stored 3 tool results and token usage in session
+2025-08-26 18:54:47,428 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-26 18:54:47,448 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 18:54:47,453 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x1490f7b10>
+2025-08-26 18:54:47,453 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x1495bee10>, 855970.915489083)])']
+connector: <aiohttp.connector.TCPConnector object at 0x1490f4cd0>
+2025-08-26 18:54:48,933 | INFO | ai_agent | Fetching device data - device_id: 865198074539541, date: 2025-08-18
+2025-08-26 18:54:51,218 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-26 18:54:53,222 | INFO | ai_agent | Query completed, extracting results...
+2025-08-26 18:54:53,222 | INFO | ai_agent | Extracted 4 tool results from callback handler
+2025-08-26 18:54:53,222 | INFO | ai_agent | Stored 4 tool results and token usage in session
+2025-08-27 07:29:16,168 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x106166d50>
+2025-08-27 07:29:16,169 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x1495bdcd0>, 856047.751567333)])']
+connector: <aiohttp.connector.TCPConnector object at 0x106166c10>
+2025-08-27 07:29:30,825 | INFO | ai_agent | Validating configuration...
+2025-08-27 07:29:30,825 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 07:29:30,825 | INFO | ai_agent | Creating LiteLLM model...
+2025-08-27 07:29:30,825 | INFO | ai_agent | LiteLLM model configured: gemini-2.5-flash-preview-04-17
+2025-08-27 07:29:30,825 | INFO | ai_agent | Preparing tools...
+2025-08-27 07:29:30,825 | INFO | ai_agent | Created 5 tools for agent
+2025-08-27 07:29:30,825 | INFO | ai_agent | Initializing Strands Agent with CaptureCallbackHandler...
+2025-08-27 07:29:30,825 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 07:29:39,642 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 07:29:39,643 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-27 07:29:39,652 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.5-flash-preview-04-17; provider = vertex_ai
+2025-08-27 07:29:39,659 | ERROR | LiteLLM | Failed to load vertex credentials. Check to see if credentials containing partial/invalid information. Error: No module named 'google.auth'
+Traceback (most recent call last):
+  File "/Users/amulya/Library/Application Support/hatch/env/virtual/dextro/fUyM4svZ/dextro/lib/python3.13/site-packages/litellm/llms/vertex_ai/vertex_llm_base.py", line 430, in get_access_token
+    _credentials, credential_project_id = self.load_auth(
+                                          ~~~~~~~~~~~~~~^
+        credentials=credentials, project_id=project_id
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/amulya/Library/Application Support/hatch/env/virtual/dextro/fUyM4svZ/dextro/lib/python3.13/site-packages/litellm/llms/vertex_ai/vertex_llm_base.py", line 114, in load_auth
+    creds, creds_project_id = self._credentials_from_default_auth(
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        scopes=["https://www.googleapis.com/auth/cloud-platform"]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/amulya/Library/Application Support/hatch/env/virtual/dextro/fUyM4svZ/dextro/lib/python3.13/site-packages/litellm/llms/vertex_ai/vertex_llm_base.py", line 158, in _credentials_from_default_auth
+    import google.auth as google_auth
+ModuleNotFoundError: No module named 'google.auth'
+2025-08-27 07:29:39,676 | ERROR | ai_agent | Error querying Dextro agent: litellm.APIConnectionError: No module named 'google.auth'
+Traceback (most recent call last):
+  File "/Users/amulya/Library/Application Support/hatch/env/virtual/dextro/fUyM4svZ/dextro/lib/python3.13/site-packages/litellm/main.py", line 543, in acompletion
+    response = await init_response
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/amulya/Library/Application Support/hatch/env/virtual/dextro/fUyM4svZ/dextro/lib/python3.13/site-packages/litellm/llms/vertex_ai/gemini/vertex_and_google_ai_studio_gemini.py", line 1560, in async_streaming
+    _auth_header, vertex_project = await self._ensure_access_token_async(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/amulya/Library/Application Support/hatch/env/virtual/dextro/fUyM4svZ/dextro/lib/python3.13/site-packages/litellm/llms/vertex_ai/vertex_llm_base.py", line 514, in _ensure_access_token_async
+    raise e
+  File "/Users/amulya/Library/Application Support/hatch/env/virtual/dextro/fUyM4svZ/dextro/lib/python3.13/site-packages/litellm/llms/vertex_ai/vertex_llm_base.py", line 509, in _ensure_access_token_async
+    return await asyncify(self.get_access_token)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "/Users/amulya/Library/Application Support/hatch/env/virtual/dextro/fUyM4svZ/dextro/lib/python3.13/site-packages/litellm/litellm_core_utils/asyncify.py", line 57, in wrapper
+    return await anyio.to_thread.run_sync(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/amulya/Library/Application Support/hatch/env/virtual/dextro/fUyM4svZ/dextro/lib/python3.13/site-packages/anyio/to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/amulya/Library/Application Support/hatch/env/virtual/dextro/fUyM4svZ/dextro/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 2476, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/Users/amulya/Library/Application Support/hatch/env/virtual/dextro/fUyM4svZ/dextro/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "/Users/amulya/Library/Application Support/hatch/env/virtual/dextro/fUyM4svZ/dextro/lib/python3.13/site-packages/litellm/llms/vertex_ai/vertex_llm_base.py", line 437, in get_access_token
+    raise e
+  File "/Users/amulya/Library/Application Support/hatch/env/virtual/dextro/fUyM4svZ/dextro/lib/python3.13/site-packages/litellm/llms/vertex_ai/vertex_llm_base.py", line 430, in get_access_token
+    _credentials, credential_project_id = self.load_auth(
+                                          ~~~~~~~~~~~~~~^
+        credentials=credentials, project_id=project_id
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/amulya/Library/Application Support/hatch/env/virtual/dextro/fUyM4svZ/dextro/lib/python3.13/site-packages/litellm/llms/vertex_ai/vertex_llm_base.py", line 114, in load_auth
+    creds, creds_project_id = self._credentials_from_default_auth(
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        scopes=["https://www.googleapis.com/auth/cloud-platform"]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/amulya/Library/Application Support/hatch/env/virtual/dextro/fUyM4svZ/dextro/lib/python3.13/site-packages/litellm/llms/vertex_ai/vertex_llm_base.py", line 158, in _credentials_from_default_auth
+    import google.auth as google_auth
+ModuleNotFoundError: No module named 'google.auth'
+
+2025-08-27 07:55:32,861 | INFO | ai_agent | Validating configuration...
+2025-08-27 07:55:32,861 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 07:55:32,862 | INFO | ai_agent | Creating LiteLLM model...
+2025-08-27 07:55:32,862 | INFO | ai_agent | LiteLLM model configured: gemini/gemini-2.0-flash-lite-preview-02-05
+2025-08-27 07:55:32,862 | INFO | ai_agent | Preparing tools...
+2025-08-27 07:55:32,862 | INFO | ai_agent | Created 5 tools for agent
+2025-08-27 07:55:32,862 | INFO | ai_agent | Initializing Strands Agent with CaptureCallbackHandler...
+2025-08-27 07:55:32,862 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 07:55:40,868 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 07:55:40,869 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-27 07:55:40,879 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-27 07:55:42,651 | INFO | ai_agent | Executing database query on device_power_logs with columns: District, PumpError
+2025-08-27 07:55:42,662 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-27 07:55:45,614 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-27 07:55:52,873 | INFO | ai_agent | Query completed, extracting results...
+2025-08-27 07:55:52,874 | INFO | ai_agent | Extracted 1 tool results from callback handler
+2025-08-27 07:55:52,875 | INFO | ai_agent | Stored 1 tool results and token usage in session
+2025-08-27 07:56:14,460 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 07:56:14,464 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-27 07:56:14,468 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x12fe1e270>
+2025-08-27 07:56:14,468 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x12fe28ef0>, 896321.356756333)])']
+connector: <aiohttp.connector.TCPConnector object at 0x12fe1da90>
+2025-08-27 07:56:15,747 | INFO | ai_agent | Query completed, extracting results...
+2025-08-27 07:56:15,747 | INFO | ai_agent | Extracted 1 tool results from callback handler
+2025-08-27 07:56:15,748 | INFO | ai_agent | Stored 1 tool results and token usage in session
+2025-08-27 07:56:43,043 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 07:56:43,047 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-27 07:56:43,051 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x12fdbde50>
+2025-08-27 07:56:43,051 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x12fe2b110>, 896344.232071208)])']
+connector: <aiohttp.connector.TCPConnector object at 0x12fdbee90>
+2025-08-27 07:56:44,583 | INFO | ai_agent | Performing system health monitoring
+2025-08-27 07:56:46,273 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-27 07:56:48,164 | INFO | ai_agent | Query completed, extracting results...
+2025-08-27 07:56:48,164 | INFO | ai_agent | Extracted 2 tool results from callback handler
+2025-08-27 07:56:48,164 | INFO | ai_agent | Stored 2 tool results and token usage in session
+2025-08-27 07:57:42,564 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 07:57:42,567 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-27 07:57:42,570 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x12f6fe350>
+2025-08-27 07:57:42,571 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x12e7f8b30>, 896376.650716625)])']
+connector: <aiohttp.connector.TCPConnector object at 0x12f6fd950>
+2025-08-27 07:57:44,775 | INFO | ai_agent | Executing database query on device_power_logs with columns: District, PumpError
+2025-08-27 07:57:45,970 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-27 07:57:52,998 | INFO | ai_agent | Query completed, extracting results...
+2025-08-27 07:57:52,998 | INFO | ai_agent | Extracted 3 tool results from callback handler
+2025-08-27 07:57:52,998 | INFO | ai_agent | Stored 3 tool results and token usage in session
+2025-08-27 07:58:38,850 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 07:58:38,854 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-27 07:58:38,857 | ERROR | asyncio | Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x1043df250>
+2025-08-27 07:58:38,858 | ERROR | asyncio | Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x12fe2b470>, 896441.48050125)])']
+connector: <aiohttp.connector.TCPConnector object at 0x1043de990>
+2025-08-27 07:58:40,920 | INFO | ai_agent | Executing database query on device_power_logs with columns: PumpError
+2025-08-27 07:58:41,923 | INFO | LiteLLM | 
+LiteLLM completion() model= gemini-2.0-flash-lite-preview-02-05; provider = gemini
+2025-08-27 07:58:47,283 | INFO | ai_agent | Query completed, extracting results...
+2025-08-27 07:58:47,283 | INFO | ai_agent | Extracted 4 tool results from callback handler
+2025-08-27 07:58:47,283 | INFO | ai_agent | Stored 4 tool results and token usage in session
+2025-08-27 14:15:54,856 | INFO | ai_agent | Validating configuration...
+2025-08-27 14:15:54,856 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 14:15:54,856 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 14:15:54,884 | INFO | ai_agent | Anthropic model configured: claude-sonnet-4-20250514
+2025-08-27 14:15:54,885 | INFO | ai_agent | Preparing tools...
+2025-08-27 14:15:54,885 | INFO | ai_agent | Created 5 tools for agent
+2025-08-27 14:15:54,885 | INFO | ai_agent | Initializing Strands Agent with CaptureCallbackHandler...
+2025-08-27 14:15:54,885 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 14:16:00,784 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 14:16:00,785 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-27 14:16:01,406 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-08-27 14:16:01,409 | ERROR | ai_agent | Error querying Dextro agent: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CSYudWu2H3YCCwqcmE4Ua'}
+2025-08-27 14:21:28,062 | INFO | ai_agent | Validating configuration...
+2025-08-27 14:21:28,062 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 14:21:28,062 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 14:21:28,071 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 14:21:28,071 | INFO | ai_agent | Preparing tools...
+2025-08-27 14:21:28,071 | INFO | ai_agent | Created 5 tools for agent
+2025-08-27 14:21:28,071 | INFO | ai_agent | Initializing Strands Agent with CaptureCallbackHandler...
+2025-08-27 14:21:28,072 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 14:21:28,214 | INFO | ai_agent | Validating configuration...
+2025-08-27 14:21:28,217 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 14:21:28,217 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 14:21:28,222 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 14:21:28,222 | INFO | ai_agent | Preparing tools...
+2025-08-27 14:21:28,222 | INFO | ai_agent | Created 5 tools for agent
+2025-08-27 14:21:28,222 | INFO | ai_agent | Initializing Strands Agent with CaptureCallbackHandler...
+2025-08-27 14:21:28,223 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 14:25:26,267 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 14:25:26,273 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.390850 seconds
+2025-08-27 14:25:29,577 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 14:25:30,908 | INFO | ai_agent | Performing system health monitoring
+2025-08-27 14:25:30,921 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-27 14:25:33,101 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=%2A&order=CreatedOnDate.desc "HTTP/2 200 OK"
+2025-08-27 14:25:38,425 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 14:25:49,162 | INFO | ai_agent | Query completed, extracting results...
+2025-08-27 14:25:49,162 | INFO | ai_agent | Extracted 1 tool results from callback handler
+2025-08-27 14:25:49,162 | INFO | ai_agent | Stored 1 tool results and token usage in session
+2025-08-27 14:37:32,654 | INFO | ai_agent | Validating configuration...
+2025-08-27 14:37:32,654 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 14:37:32,655 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 14:37:32,662 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 14:37:32,662 | INFO | ai_agent | Preparing tools...
+2025-08-27 14:37:32,662 | INFO | ai_agent | Created 4 tools for agent
+2025-08-27 14:37:32,662 | INFO | ai_agent | Initializing Strands Agent with CaptureCallbackHandler...
+2025-08-27 14:37:32,662 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 14:37:32,750 | INFO | ai_agent | Validating configuration...
+2025-08-27 14:37:32,750 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 14:37:32,750 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 14:37:32,756 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 14:37:32,756 | INFO | ai_agent | Preparing tools...
+2025-08-27 14:37:32,756 | INFO | ai_agent | Created 4 tools for agent
+2025-08-27 14:37:32,756 | INFO | ai_agent | Initializing Strands Agent with CaptureCallbackHandler...
+2025-08-27 14:37:32,756 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 14:40:02,603 | INFO | ai_agent | Validating configuration...
+2025-08-27 14:40:02,603 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 14:40:02,603 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 14:40:02,632 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 14:40:02,632 | INFO | ai_agent | Preparing tools...
+2025-08-27 14:40:02,632 | INFO | ai_agent | Created 4 tools for agent
+2025-08-27 14:40:02,632 | INFO | ai_agent | Initializing Strands Agent with CaptureCallbackHandler...
+2025-08-27 14:40:02,632 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 14:40:12,634 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 14:40:12,635 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-27 14:40:15,789 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 14:40:17,795 | INFO | agentic_tools | Executing generic Supabase query: SELECT Location, District, COUNT(*) as total_devices, COUNT(DISTINCT device_id) as unique_devices FR...
+2025-08-27 14:40:17,807 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-27 14:40:19,062 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=Location%2CDistrict%2CCOUNT%28%2A%29astotal_devices%2CCOUNT%28DISTINCTdevice_id%29asunique_devices&order=DISTRICT%2C+LOCATION.asc "HTTP/2 400 Bad Request"
+2025-08-27 14:40:19,063 | WARNING | ai_agent.supabase | Retrying operation... (attempt 1)
+2025-08-27 14:40:20,100 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=Location%2CDistrict%2CCOUNT%28%2A%29astotal_devices%2CCOUNT%28DISTINCTdevice_id%29asunique_devices&order=DISTRICT%2C+LOCATION.asc "HTTP/2 400 Bad Request"
+2025-08-27 14:40:20,101 | WARNING | ai_agent.supabase | Retrying operation... (attempt 2)
+2025-08-27 14:40:21,059 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=Location%2CDistrict%2CCOUNT%28%2A%29astotal_devices%2CCOUNT%28DISTINCTdevice_id%29asunique_devices&order=DISTRICT%2C+LOCATION.asc "HTTP/2 400 Bad Request"
+2025-08-27 14:40:21,061 | ERROR | ai_agent.supabase | Supabase API error: {'message': "Could not find a relationship between 'device_power_logs' and 'COUNT' in the schema cache", 'code': 'PGRST200', 'hint': None, 'details': "Searched for a foreign key relationship between 'device_power_logs' and 'COUNT' in the schema 'public', but no matches were found."}
+2025-08-27 14:40:24,742 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 14:40:25,718 | INFO | agentic_tools | Performing system health monitoring
+2025-08-27 14:40:27,040 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=%2A&order=CreatedOnDate.desc "HTTP/2 200 OK"
+2025-08-27 14:40:30,022 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 14:40:31,412 | INFO | agentic_tools | Executing generic Supabase query: SELECT District, Location, COUNT(DISTINCT device_id) as device_count FROM device_power_logs GROUP BY...
+2025-08-27 14:40:32,328 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=District%2CLocation%2CCOUNT%28DISTINCTdevice_id%29asdevice_count&order=DISTRICT%2C+LOCATION.asc "HTTP/2 400 Bad Request"
+2025-08-27 14:40:32,330 | WARNING | ai_agent.supabase | Retrying operation... (attempt 1)
+2025-08-27 14:40:33,214 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=District%2CLocation%2CCOUNT%28DISTINCTdevice_id%29asdevice_count&order=DISTRICT%2C+LOCATION.asc "HTTP/2 400 Bad Request"
+2025-08-27 14:40:33,216 | WARNING | ai_agent.supabase | Retrying operation... (attempt 2)
+2025-08-27 14:40:33,566 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=District%2CLocation%2CCOUNT%28DISTINCTdevice_id%29asdevice_count&order=DISTRICT%2C+LOCATION.asc "HTTP/2 400 Bad Request"
+2025-08-27 14:40:33,567 | ERROR | ai_agent.supabase | Supabase API error: {'message': "Could not find a relationship between 'device_power_logs' and 'COUNT' in the schema cache", 'code': 'PGRST200', 'hint': None, 'details': "Searched for a foreign key relationship between 'device_power_logs' and 'COUNT' in the schema 'public', but no matches were found."}
+2025-08-27 14:40:35,572 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 14:40:36,913 | INFO | agentic_tools | Executing generic Supabase query: SELECT DISTINCT District, Location FROM device_power_logs ORDER BY District, Location...
+2025-08-27 14:40:37,313 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=DISTINCTDistrict%2CLocation&order=DISTRICT%2C+LOCATION.asc "HTTP/2 400 Bad Request"
+2025-08-27 14:40:37,314 | WARNING | ai_agent.supabase | Retrying operation... (attempt 1)
+2025-08-27 14:40:37,669 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=DISTINCTDistrict%2CLocation&order=DISTRICT%2C+LOCATION.asc "HTTP/2 400 Bad Request"
+2025-08-27 14:40:37,670 | WARNING | ai_agent.supabase | Retrying operation... (attempt 2)
+2025-08-27 14:40:38,659 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=DISTINCTDistrict%2CLocation&order=DISTRICT%2C+LOCATION.asc "HTTP/2 400 Bad Request"
+2025-08-27 14:40:38,661 | ERROR | ai_agent.supabase | Supabase API error: {'message': 'column device_power_logs.DISTINCTDistrict does not exist', 'code': '42703', 'hint': None, 'details': None}
+2025-08-27 14:40:40,684 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 14:40:41,525 | INFO | agentic_tools | Executing generic Supabase query: SELECT DISTINCT District, Location FROM device_power_logs...
+2025-08-27 14:40:41,850 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=DISTINCTDistrict%2CLocation "HTTP/2 400 Bad Request"
+2025-08-27 14:40:41,851 | WARNING | ai_agent.supabase | Retrying operation... (attempt 1)
+2025-08-27 14:40:42,729 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=DISTINCTDistrict%2CLocation "HTTP/2 400 Bad Request"
+2025-08-27 14:40:42,731 | WARNING | ai_agent.supabase | Retrying operation... (attempt 2)
+2025-08-27 14:40:43,070 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=DISTINCTDistrict%2CLocation "HTTP/2 400 Bad Request"
+2025-08-27 14:40:43,071 | ERROR | ai_agent.supabase | Supabase API error: {'message': 'column device_power_logs.DISTINCTDistrict does not exist', 'code': '42703', 'hint': None, 'details': None}
+2025-08-27 14:40:43,300 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 14:40:43,301 | INFO | anthropic._base_client | Retrying request to /v1/messages in 13.000000 seconds
+2025-08-27 14:40:58,041 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 14:40:58,977 | INFO | agentic_tools | Executing generic Supabase query: SELECT * FROM device_power_logs LIMIT 1...
+2025-08-27 14:40:59,905 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=%2A&limit=1 "HTTP/2 200 OK"
+2025-08-27 14:41:00,115 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 14:41:00,116 | INFO | anthropic._base_client | Retrying request to /v1/messages in 18.000000 seconds
+2025-08-27 14:50:08,500 | INFO | ai_agent | Validating configuration...
+2025-08-27 14:50:08,501 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 14:50:08,503 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 14:50:08,510 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 14:50:08,510 | INFO | ai_agent | Preparing tools...
+2025-08-27 14:50:08,510 | INFO | ai_agent | Created 4 tools for agent
+2025-08-27 14:50:08,510 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 14:50:08,510 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 14:50:08,520 | INFO | ai_agent | Validating configuration...
+2025-08-27 14:50:08,529 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 14:50:08,529 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 14:50:08,608 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 14:50:08,608 | INFO | ai_agent | Preparing tools...
+2025-08-27 14:50:08,608 | INFO | ai_agent | Created 4 tools for agent
+2025-08-27 14:50:08,608 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 14:50:08,609 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 14:53:42,728 | INFO | ai_agent | Validating configuration...
+2025-08-27 14:53:42,728 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 14:53:42,728 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 14:53:42,756 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 14:53:42,756 | INFO | ai_agent | Preparing tools...
+2025-08-27 14:53:42,756 | INFO | ai_agent | Created 4 tools for agent
+2025-08-27 14:53:42,756 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 14:53:42,756 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 14:53:53,924 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 14:53:53,925 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-27 14:54:12,188 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 14:54:13,962 | INFO | agentic_tools | Executing Supabase query on device_power_logs with columns: Location, PumpError, COUNT(*)
+2025-08-27 14:54:13,976 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-27 14:54:15,422 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=Location%2CPumpError%2CCOUNT%28%2A%29&order=COUNT%28%2A%29.desc "HTTP/2 400 Bad Request"
+2025-08-27 14:54:15,423 | WARNING | ai_agent.supabase | Retrying operation... (attempt 1)
+2025-08-27 14:54:16,340 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=Location%2CPumpError%2CCOUNT%28%2A%29&order=COUNT%28%2A%29.desc "HTTP/2 400 Bad Request"
+2025-08-27 14:54:16,341 | WARNING | ai_agent.supabase | Retrying operation... (attempt 2)
+2025-08-27 14:54:17,262 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=Location%2CPumpError%2CCOUNT%28%2A%29&order=COUNT%28%2A%29.desc "HTTP/2 400 Bad Request"
+2025-08-27 14:54:17,263 | ERROR | ai_agent.supabase | Supabase API error: {'message': '"failed to parse order (COUNT(*).desc)" (line 1, column 6)', 'code': 'PGRST100', 'hint': None, 'details': 'unexpected \'(\' expecting letter, digit, "-", "->>", "->", delimiter (.), "," or end of input'}
+2025-08-27 14:54:29,311 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 14:54:30,862 | INFO | agentic_tools | Executing Supabase query on device_power_logs with columns: Location
+2025-08-27 14:54:32,132 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=Location "HTTP/2 200 OK"
+2025-08-27 14:54:33,348 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 14:54:34,536 | INFO | agentic_tools | Executing Supabase query on device_power_logs with columns: District
+2025-08-27 14:54:35,452 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=District "HTTP/2 200 OK"
+2025-08-27 14:54:38,758 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 14:54:40,139 | INFO | agentic_tools | Executing Supabase query on device_power_logs with columns: District, PumpError, device_id
+2025-08-27 14:54:40,612 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=District%2CPumpError%2Cdevice_id "HTTP/2 200 OK"
+2025-08-27 14:54:45,775 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 14:54:46,857 | INFO | agentic_tools | Performing system health monitoring
+2025-08-27 14:54:48,289 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=%2A&order=CreatedOnDate.desc "HTTP/2 200 OK"
+2025-08-27 14:54:49,268 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 14:54:49,270 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.394188 seconds
+2025-08-27 14:54:50,372 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 14:54:50,372 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.941588 seconds
+2025-08-27 14:54:51,974 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 14:54:56,409 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 14:54:56,410 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.482797 seconds
+2025-08-27 14:54:57,520 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 14:54:57,521 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.838859 seconds
+2025-08-27 14:54:59,040 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 14:55:07,816 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 14:55:07,817 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.474482 seconds
+2025-08-27 14:55:09,094 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 14:55:09,095 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.781818 seconds
+2025-08-27 14:55:10,854 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 15:03:39,514 | INFO | ai_agent | Validating configuration...
+2025-08-27 15:03:39,514 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 15:03:39,515 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 15:03:39,543 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 15:03:39,544 | INFO | ai_agent | Preparing tools...
+2025-08-27 15:03:39,544 | INFO | ai_agent | Created 4 tools for agent
+2025-08-27 15:03:39,544 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 15:03:39,544 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 15:04:11,243 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 15:04:11,244 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-27 15:04:14,027 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 15:04:16,126 | INFO | agentic_tools | Executing Supabase query on device_power_logs with columns: Location, PumpError
+2025-08-27 15:04:16,139 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-27 15:04:17,884 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=Location%2CPumpError&PumpError=neq.0%2C%219999 "HTTP/2 200 OK"
+2025-08-27 15:04:21,535 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 15:04:23,303 | INFO | agentic_tools | Executing Supabase query on device_power_logs with columns: Location
+2025-08-27 15:04:24,268 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=Location "HTTP/2 200 OK"
+2025-08-27 15:04:24,593 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 15:04:24,595 | INFO | anthropic._base_client | Retrying request to /v1/messages in 59.000000 seconds
+2025-08-27 15:05:27,695 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 15:05:29,611 | INFO | agentic_tools | Executing Supabase query on device_power_logs with columns: Location, PumpError
+2025-08-27 15:05:30,636 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=Location%2CPumpError&PumpError=neq.0%2C%219999 "HTTP/2 200 OK"
+2025-08-27 15:05:31,163 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 15:05:31,164 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.416590 seconds
+2025-08-27 15:05:32,351 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 15:05:32,352 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.776546 seconds
+2025-08-27 15:05:33,883 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 15:05:38,490 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 15:05:38,491 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.430231 seconds
+2025-08-27 15:05:39,648 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 15:05:39,649 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.930451 seconds
+2025-08-27 15:05:41,252 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 15:05:50,212 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 15:05:50,214 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.420394 seconds
+2025-08-27 15:05:51,491 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 15:05:51,492 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.864488 seconds
+2025-08-27 15:05:53,202 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 16:57:23,174 | INFO | ai_agent | Validating configuration...
+2025-08-27 16:57:23,174 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 16:57:23,174 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 16:57:23,204 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 16:57:23,204 | INFO | ai_agent | Preparing tools...
+2025-08-27 16:57:23,204 | INFO | ai_agent | Created 10 tools for agent
+2025-08-27 16:57:23,204 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 16:57:23,204 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 16:58:10,783 | INFO | ai_agent | Validating configuration...
+2025-08-27 16:58:10,783 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 16:58:10,783 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 16:58:10,809 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 16:58:10,809 | INFO | ai_agent | Preparing tools...
+2025-08-27 16:58:10,809 | INFO | ai_agent | Created 10 tools for agent
+2025-08-27 16:58:10,809 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 16:58:10,809 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 16:58:55,512 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 16:58:55,513 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-27 16:58:57,007 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 16:58:58,220 | INFO | agentic_tools | Fetching business performance summary for 1 days
+2025-08-27 16:58:58,235 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-27 16:59:00,035 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_business_performance_summary "HTTP/2 404 Not Found"
+2025-08-27 16:59:00,036 | ERROR | agentic_tools | Error fetching business performance summary: {'message': 'operator does not exist: text > integer', 'code': '42883', 'hint': 'No operator matches the given name and argument types. You might need to add explicit type casts.', 'details': None}
+2025-08-27 16:59:08,014 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 16:59:09,287 | INFO | agentic_tools | Fetching comprehensive fleet health overview
+2025-08-27 16:59:10,224 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_fleet_health_overview "HTTP/2 404 Not Found"
+2025-08-27 16:59:10,226 | ERROR | agentic_tools | Error fetching fleet health overview: {'message': 'operator does not exist: text > integer', 'code': '42883', 'hint': 'No operator matches the given name and argument types. You might need to add explicit type casts.', 'details': None}
+2025-08-27 16:59:11,476 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 16:59:12,846 | INFO | agentic_tools | Fetching 15 device logs with filters - device_id: None, location: None
+2025-08-27 16:59:13,868 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=%2A&order=CreatedOnDate.desc&limit=15 "HTTP/2 200 OK"
+2025-08-27 16:59:13,878 | INFO | agentic_tools | Created DataFrame with 15 rows for Streamlit display
+2025-08-27 16:59:16,644 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 16:59:17,582 | INFO | agentic_tools | Analyzing critical issues across the fleet
+2025-08-27 16:59:18,518 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_critical_issues_analysis "HTTP/2 404 Not Found"
+2025-08-27 16:59:18,519 | ERROR | agentic_tools | Error analyzing critical issues: {'message': 'operator does not exist: text > integer', 'code': '42883', 'hint': 'No operator matches the given name and argument types. You might need to add explicit type casts.', 'details': None}
+2025-08-27 16:59:18,775 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 16:59:18,776 | INFO | anthropic._base_client | Retrying request to /v1/messages in 40.000000 seconds
+2025-08-27 17:05:59,977 | INFO | ai_agent | Validating configuration...
+2025-08-27 17:05:59,978 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 17:05:59,978 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 17:06:00,006 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 17:06:00,006 | INFO | ai_agent | Preparing tools...
+2025-08-27 17:06:00,006 | INFO | ai_agent | Created 10 tools for agent
+2025-08-27 17:06:00,006 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 17:06:00,006 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 17:06:26,053 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 17:06:26,054 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-27 17:06:29,025 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:06:30,381 | INFO | agentic_tools | Fetching business performance summary for 1 days
+2025-08-27 17:06:30,400 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-27 17:06:31,794 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_business_performance_summary "HTTP/2 404 Not Found"
+2025-08-27 17:06:31,796 | ERROR | agentic_tools | Error fetching business performance summary: {'message': 'operator does not exist: text > integer', 'code': '42883', 'hint': 'No operator matches the given name and argument types. You might need to add explicit type casts.', 'details': None}
+2025-08-27 17:07:53,566 | INFO | ai_agent | Validating configuration...
+2025-08-27 17:07:53,566 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 17:07:53,566 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 17:07:53,596 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 17:07:53,596 | INFO | ai_agent | Preparing tools...
+2025-08-27 17:07:53,596 | INFO | ai_agent | Created 10 tools for agent
+2025-08-27 17:07:53,596 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 17:07:53,596 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 17:08:03,900 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 17:08:03,901 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-27 17:08:06,047 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:08:07,758 | INFO | agentic_tools | Fetching business performance summary for 1 days
+2025-08-27 17:08:07,775 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-27 17:08:08,276 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_business_performance_summary "HTTP/2 404 Not Found"
+2025-08-27 17:08:08,278 | ERROR | agentic_tools | Error fetching business performance summary: {'message': 'operator does not exist: text > integer', 'code': '42883', 'hint': 'No operator matches the given name and argument types. You might need to add explicit type casts.', 'details': None}
+2025-08-27 17:12:23,192 | INFO | ai_agent | Validating configuration...
+2025-08-27 17:12:23,192 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 17:12:23,192 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 17:12:23,239 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 17:12:23,239 | INFO | ai_agent | Preparing tools...
+2025-08-27 17:12:23,239 | INFO | ai_agent | Created 10 tools for agent
+2025-08-27 17:12:23,239 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 17:12:23,239 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 17:12:59,609 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 17:12:59,610 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-27 17:15:45,281 | INFO | ai_agent | Validating configuration...
+2025-08-27 17:15:45,282 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 17:15:45,282 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 17:15:45,309 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 17:15:45,309 | INFO | ai_agent | Preparing tools...
+2025-08-27 17:15:45,309 | INFO | ai_agent | Created 10 tools for agent
+2025-08-27 17:15:45,309 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 17:15:45,309 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 17:15:54,064 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 17:15:54,066 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-27 17:15:56,619 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:15:57,838 | INFO | agentic_tools | Fetching business performance summary for 1 days
+2025-08-27 17:15:57,839 | INFO | agentic_tools | RPC Parameters: {'p_date_range_days': 1}
+2025-08-27 17:15:57,839 | INFO | agentic_tools | Parameter types: [('p_date_range_days', 'int')]
+2025-08-27 17:15:57,839 | INFO | agentic_tools | Making RPC call to rpc_business_performance_summary
+2025-08-27 17:15:57,854 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-27 17:15:59,012 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_business_performance_summary "HTTP/2 404 Not Found"
+2025-08-27 17:15:59,014 | ERROR | agentic_tools | Error fetching business performance summary: {'message': 'function round(double precision, integer) does not exist', 'code': '42883', 'hint': 'No function matches the given name and argument types. You might need to add explicit type casts.', 'details': None}
+2025-08-27 17:15:59,014 | ERROR | agentic_tools | Exception type: APIError
+2025-08-27 17:15:59,014 | ERROR | agentic_tools | Exception details: {'message': 'function round(double precision, integer) does not exist', 'code': '42883', 'hint': 'No function matches the given name and argument types. You might need to add explicit type casts.', 'details': None}
+2025-08-27 17:19:05,619 | INFO | ai_agent | Validating configuration...
+2025-08-27 17:19:05,619 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 17:19:05,619 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 17:19:05,650 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 17:19:05,650 | INFO | ai_agent | Preparing tools...
+2025-08-27 17:19:05,650 | INFO | ai_agent | Created 10 tools for agent
+2025-08-27 17:19:05,650 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 17:19:05,651 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 17:19:15,611 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 17:19:15,613 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-27 17:19:18,942 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:19:20,676 | INFO | agentic_tools | Fetching business performance summary for 1 days
+2025-08-27 17:19:20,677 | INFO | agentic_tools | RPC Parameters: {'p_date_range_days': 1}
+2025-08-27 17:19:20,677 | INFO | agentic_tools | Parameter types: [('p_date_range_days', 'int')]
+2025-08-27 17:19:20,677 | INFO | agentic_tools | Making RPC call to rpc_business_performance_summary
+2025-08-27 17:19:20,694 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-27 17:19:23,178 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_business_performance_summary "HTTP/2 200 OK"
+2025-08-27 17:19:23,184 | INFO | agentic_tools | RPC Response status: data=[{'metric_name': 'new_devices_installed', 'metric_value': 0, 'metric_description': 'Number of new devices installed', 'additional_info': '1 day(s)'}, {'metric_name': 'co2_savings_tonnes', 'metric_value': 0, 'metric_description': 'Annual CO2 savings in tonnes', 'additional_info': 'Environmental impact'}, {'metric_name': 'total_active_devices', 'metric_value': 0, 'metric_description': 'Currently active devices', 'additional_info': 'Fleet status'}, {'metric_name': 'total_water_production', 'metric_value': 0, 'metric_description': 'Total litres produced today', 'additional_info': 'Water output'}, {'metric_name': 'total_energy_consumption', 'metric_value': 0, 'metric_description': 'Total energy consumption (KWH)', 'additional_info': 'Power usage'}, {'metric_name': 'devices_with_errors', 'metric_value': 0, 'metric_description': 'Devices currently showing errors', 'additional_info': 'Health status'}, {'metric_name': 'operational_devices', 'metric_value': 0, 'metric_description': 'Fully operational devices', 'additional_info': 'Health status'}, {'metric_name': 'fleet_uptime_percent', 'metric_value': None, 'metric_description': 'Overall fleet uptime percentage', 'additional_info': 'Performance metric'}, {'metric_name': 'average_efficiency', 'metric_value': None, 'metric_description': 'Average energy efficiency', 'additional_info': 'KWH per runtime hour'}, {'metric_name': 'top_energy_location', 'metric_value': None, 'metric_description': 'Highest energy consuming location', 'additional_info': 'N/A'}] count=None
+2025-08-27 17:19:23,185 | INFO | agentic_tools | RPC Response data length: 10
+2025-08-27 17:19:23,185 | ERROR | agentic_tools | Error fetching business performance summary: float() argument must be a string or a real number, not 'NoneType'
+2025-08-27 17:19:23,185 | ERROR | agentic_tools | Exception type: TypeError
+2025-08-27 17:19:23,185 | ERROR | agentic_tools | Exception details: float() argument must be a string or a real number, not 'NoneType'
+2025-08-27 17:19:25,581 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:24:57,137 | INFO | ai_agent | Validating configuration...
+2025-08-27 17:24:57,137 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 17:24:57,137 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 17:24:57,163 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 17:24:57,163 | INFO | ai_agent | Preparing tools...
+2025-08-27 17:24:57,163 | INFO | ai_agent | Created 10 tools for agent
+2025-08-27 17:24:57,163 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 17:24:57,164 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 17:25:05,015 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 17:25:05,017 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-27 17:25:07,139 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:25:08,225 | INFO | agentic_tools | Fetching business performance summary for 1 days
+2025-08-27 17:25:08,225 | INFO | agentic_tools | RPC Parameters: {'p_date_range_days': 1}
+2025-08-27 17:25:08,225 | INFO | agentic_tools | Parameter types: [('p_date_range_days', 'int')]
+2025-08-27 17:25:08,226 | INFO | agentic_tools | Making RPC call to rpc_business_performance_summary
+2025-08-27 17:25:08,242 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-27 17:25:10,653 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_business_performance_summary "HTTP/2 200 OK"
+2025-08-27 17:25:10,660 | INFO | agentic_tools | RPC Response status: data=[{'metric_name': 'new_devices_installed', 'metric_value': 0, 'metric_description': 'Number of new devices installed', 'additional_info': '1 day(s)'}, {'metric_name': 'co2_savings_tonnes', 'metric_value': 0, 'metric_description': 'Annual CO2 savings in tonnes', 'additional_info': 'Environmental impact'}, {'metric_name': 'total_active_devices', 'metric_value': 0, 'metric_description': 'Currently active devices', 'additional_info': 'Fleet status'}, {'metric_name': 'total_water_production', 'metric_value': 0, 'metric_description': 'Total litres produced today', 'additional_info': 'Water output'}, {'metric_name': 'total_energy_consumption', 'metric_value': 0, 'metric_description': 'Total energy consumption (KWH)', 'additional_info': 'Power usage'}, {'metric_name': 'devices_with_errors', 'metric_value': 0, 'metric_description': 'Devices currently showing errors', 'additional_info': 'Health status'}, {'metric_name': 'operational_devices', 'metric_value': 0, 'metric_description': 'Fully operational devices', 'additional_info': 'Health status'}, {'metric_name': 'fleet_uptime_percent', 'metric_value': None, 'metric_description': 'Overall fleet uptime percentage', 'additional_info': 'Performance metric'}, {'metric_name': 'average_efficiency', 'metric_value': None, 'metric_description': 'Average energy efficiency', 'additional_info': 'KWH per runtime hour'}, {'metric_name': 'top_energy_location', 'metric_value': None, 'metric_description': 'Highest energy consuming location', 'additional_info': 'N/A'}] count=None
+2025-08-27 17:25:10,660 | INFO | agentic_tools | RPC Response data length: 10
+2025-08-27 17:25:10,660 | ERROR | agentic_tools | Error fetching business performance summary: float() argument must be a string or a real number, not 'NoneType'
+2025-08-27 17:25:10,660 | ERROR | agentic_tools | Exception type: TypeError
+2025-08-27 17:25:10,661 | ERROR | agentic_tools | Exception details: float() argument must be a string or a real number, not 'NoneType'
+2025-08-27 17:25:12,895 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:25:14,090 | INFO | agentic_tools | Fetching business performance summary for 7 days
+2025-08-27 17:25:14,090 | INFO | agentic_tools | RPC Parameters: {'p_date_range_days': 7}
+2025-08-27 17:25:14,090 | INFO | agentic_tools | Parameter types: [('p_date_range_days', 'int')]
+2025-08-27 17:25:14,090 | INFO | agentic_tools | Making RPC call to rpc_business_performance_summary
+2025-08-27 17:25:15,166 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_business_performance_summary "HTTP/2 200 OK"
+2025-08-27 17:25:15,171 | INFO | agentic_tools | RPC Response status: data=[{'metric_name': 'new_devices_installed', 'metric_value': 28, 'metric_description': 'Number of new devices installed', 'additional_info': '7 day(s)'}, {'metric_name': 'co2_savings_tonnes', 'metric_value': 224, 'metric_description': 'Annual CO2 savings in tonnes', 'additional_info': 'Environmental impact'}, {'metric_name': 'total_active_devices', 'metric_value': 28, 'metric_description': 'Currently active devices', 'additional_info': 'Fleet status'}, {'metric_name': 'total_water_production', 'metric_value': 1324062764.25, 'metric_description': 'Total litres produced today', 'additional_info': 'Water output'}, {'metric_name': 'total_energy_consumption', 'metric_value': 2244269.725979992, 'metric_description': 'Total energy consumption (KWH)', 'additional_info': 'Power usage'}, {'metric_name': 'devices_with_errors', 'metric_value': 12, 'metric_description': 'Devices currently showing errors', 'additional_info': 'Health status'}, {'metric_name': 'operational_devices', 'metric_value': 28, 'metric_description': 'Fully operational devices', 'additional_info': 'Health status'}, {'metric_name': 'fleet_uptime_percent', 'metric_value': 100.0, 'metric_description': 'Overall fleet uptime percentage', 'additional_info': 'Performance metric'}, {'metric_name': 'average_efficiency', 'metric_value': 2.93, 'metric_description': 'Average energy efficiency', 'additional_info': 'KWH per runtime hour'}, {'metric_name': 'top_energy_location', 'metric_value': 700347.1242489, 'metric_description': 'Highest energy consuming location', 'additional_info': 'Ahimalpur Ahimalpur Mainpuri Ahimalpur Ahimalpur'}] count=None
+2025-08-27 17:25:15,172 | INFO | agentic_tools | RPC Response data length: 10
+2025-08-27 17:25:15,172 | INFO | agentic_tools | Stored business performance data in Streamlit session state
+2025-08-27 17:25:17,630 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:25:18,519 | INFO | agentic_tools | Fetching comprehensive fleet health overview
+2025-08-27 17:25:18,973 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_fleet_health_overview "HTTP/2 404 Not Found"
+2025-08-27 17:25:18,974 | ERROR | agentic_tools | Error fetching fleet health overview: {'message': 'operator does not exist: text > integer', 'code': '42883', 'hint': 'No operator matches the given name and argument types. You might need to add explicit type casts.', 'details': None}
+2025-08-27 17:25:22,337 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:25:23,133 | INFO | agentic_tools | Analyzing critical issues across the fleet
+2025-08-27 17:25:23,494 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_critical_issues_analysis "HTTP/2 404 Not Found"
+2025-08-27 17:25:23,495 | ERROR | agentic_tools | Error analyzing critical issues: {'message': 'operator does not exist: text > integer', 'code': '42883', 'hint': 'No operator matches the given name and argument types. You might need to add explicit type casts.', 'details': None}
+2025-08-27 17:25:23,766 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 17:25:23,766 | INFO | anthropic._base_client | Retrying request to /v1/messages in 27.000000 seconds
+2025-08-27 17:31:51,834 | INFO | ai_agent | Validating configuration...
+2025-08-27 17:31:51,834 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 17:31:51,834 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 17:31:51,852 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 17:31:51,852 | INFO | ai_agent | Preparing tools...
+2025-08-27 17:31:51,852 | INFO | ai_agent | Created 10 tools for agent
+2025-08-27 17:31:51,852 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 17:31:51,852 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 17:32:01,478 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 17:32:01,479 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-27 17:32:04,120 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:32:06,266 | INFO | agentic_tools | Fetching business performance summary for 20 days
+2025-08-27 17:32:06,266 | INFO | agentic_tools | RPC Parameters: {'p_date_range_days': 20}
+2025-08-27 17:32:06,267 | INFO | agentic_tools | Parameter types: [('p_date_range_days', 'int')]
+2025-08-27 17:32:06,267 | INFO | agentic_tools | Making RPC call to rpc_business_performance_summary
+2025-08-27 17:32:06,278 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-27 17:32:07,862 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_business_performance_summary "HTTP/2 200 OK"
+2025-08-27 17:32:07,868 | INFO | agentic_tools | RPC Response status: data=[{'metric_name': 'new_devices_installed', 'metric_value': 29, 'metric_description': 'Number of new devices installed', 'additional_info': '20 day(s)'}, {'metric_name': 'co2_savings_tonnes', 'metric_value': 232, 'metric_description': 'Annual CO2 savings in tonnes', 'additional_info': 'Environmental impact'}, {'metric_name': 'total_active_devices', 'metric_value': 29, 'metric_description': 'Currently active devices', 'additional_info': 'Fleet status'}, {'metric_name': 'total_water_production', 'metric_value': 5404563866.99, 'metric_description': 'Total litres produced', 'additional_info': 'Water output'}, {'metric_name': 'total_energy_consumption', 'metric_value': 16245923.588195752, 'metric_description': 'Total energy consumption (KWH)', 'additional_info': 'Power usage'}, {'metric_name': 'devices_with_errors', 'metric_value': 28, 'metric_description': 'Devices currently showing errors', 'additional_info': 'Health status'}, {'metric_name': 'operational_devices', 'metric_value': 29, 'metric_description': 'Fully operational devices', 'additional_info': 'Health status'}, {'metric_name': 'fleet_uptime_percent', 'metric_value': 100.0, 'metric_description': 'Overall fleet uptime percentage', 'additional_info': 'Performance metric'}, {'metric_name': 'average_efficiency', 'metric_value': 5.92, 'metric_description': 'Average energy efficiency', 'additional_info': 'KWH per runtime hour'}, {'metric_name': 'top_energy_location', 'metric_value': 7780388.786058493, 'metric_description': 'Highest energy consuming location', 'additional_info': '#N/A'}] count=None
+2025-08-27 17:32:07,868 | INFO | agentic_tools | RPC Response data length: 10
+2025-08-27 17:32:07,869 | INFO | agentic_tools | Stored business performance data in Streamlit session state
+2025-08-27 17:32:10,100 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:32:10,819 | INFO | agentic_tools | Fetching comprehensive fleet health overview
+2025-08-27 17:32:11,776 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_fleet_health_overview "HTTP/2 404 Not Found"
+2025-08-27 17:32:11,777 | ERROR | agentic_tools | Error fetching fleet health overview: {'message': 'operator does not exist: text > integer', 'code': '42883', 'hint': 'No operator matches the given name and argument types. You might need to add explicit type casts.', 'details': None}
+2025-08-27 17:32:13,466 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:32:14,309 | INFO | agentic_tools | Analyzing critical issues across the fleet
+2025-08-27 17:32:15,505 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_critical_issues_analysis "HTTP/2 200 OK"
+2025-08-27 17:32:15,509 | INFO | agentic_tools | Stored 30 critical issues in session state
+2025-08-27 17:32:21,462 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:32:22,655 | INFO | agentic_tools | Analyzing high error devices with threshold: 5
+2025-08-27 17:32:22,655 | INFO | agentic_tools | RPC Parameters: {'p_error_threshold': 5}
+2025-08-27 17:32:22,656 | INFO | agentic_tools | Parameter types: [('p_error_threshold', 'int')]
+2025-08-27 17:32:23,702 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_high_error_devices "HTTP/2 404 Not Found"
+2025-08-27 17:32:23,704 | ERROR | agentic_tools | Error analyzing high error devices: {'message': 'operator does not exist: text > integer', 'code': '42883', 'hint': 'No operator matches the given name and argument types. You might need to add explicit type casts.', 'details': None}
+2025-08-27 17:32:24,130 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 17:32:24,132 | INFO | anthropic._base_client | Retrying request to /v1/messages in 30.000000 seconds
+2025-08-27 17:37:35,476 | INFO | ai_agent | Validating configuration...
+2025-08-27 17:37:35,476 | INFO | ai_agent | Dextro agent configuration validation passed
+2025-08-27 17:37:35,476 | INFO | ai_agent | Creating Anthropic model...
+2025-08-27 17:37:35,494 | INFO | ai_agent | Anthropic model configured: claude-3-7-sonnet-20250219
+2025-08-27 17:37:35,495 | INFO | ai_agent | Preparing tools...
+2025-08-27 17:37:35,495 | INFO | ai_agent | Created 10 tools for agent
+2025-08-27 17:37:35,495 | INFO | ai_agent | Initializing Strands Agent with PrintingCallbackHandler...
+2025-08-27 17:37:35,495 | INFO | ai_agent | Dextro IoT agent initialized successfully
+2025-08-27 17:37:45,617 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 17:37:45,619 | INFO | strands.telemetry.metrics | Creating Strands MetricsClient
+2025-08-27 17:37:47,313 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:37:49,394 | INFO | agentic_tools | Fetching business performance summary for 20 days
+2025-08-27 17:37:49,394 | INFO | agentic_tools | RPC Parameters: {'p_date_range_days': 20}
+2025-08-27 17:37:49,394 | INFO | agentic_tools | Parameter types: [('p_date_range_days', 'int')]
+2025-08-27 17:37:49,394 | INFO | agentic_tools | Making RPC call to rpc_business_performance_summary
+2025-08-27 17:37:49,408 | INFO | ai_agent.supabase | Dextro Supabase client initialized successfully
+2025-08-27 17:37:51,545 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_business_performance_summary "HTTP/2 200 OK"
+2025-08-27 17:37:51,550 | INFO | agentic_tools | RPC Response status: data=[{'metric_name': 'new_devices_installed', 'metric_value': 29, 'metric_description': 'Number of new devices installed', 'additional_info': '20 day(s)'}, {'metric_name': 'co2_savings_tonnes', 'metric_value': 232, 'metric_description': 'Annual CO2 savings in tonnes', 'additional_info': 'Environmental impact'}, {'metric_name': 'total_active_devices', 'metric_value': 29, 'metric_description': 'Currently active devices', 'additional_info': 'Fleet status'}, {'metric_name': 'total_water_production', 'metric_value': 5404563866.99, 'metric_description': 'Total litres produced', 'additional_info': 'Water output'}, {'metric_name': 'total_energy_consumption', 'metric_value': 16245923.588195752, 'metric_description': 'Total energy consumption (KWH)', 'additional_info': 'Power usage'}, {'metric_name': 'devices_with_errors', 'metric_value': 28, 'metric_description': 'Devices currently showing errors', 'additional_info': 'Health status'}, {'metric_name': 'operational_devices', 'metric_value': 29, 'metric_description': 'Fully operational devices', 'additional_info': 'Health status'}, {'metric_name': 'fleet_uptime_percent', 'metric_value': 100.0, 'metric_description': 'Overall fleet uptime percentage', 'additional_info': 'Performance metric'}, {'metric_name': 'average_efficiency', 'metric_value': 5.92, 'metric_description': 'Average energy efficiency', 'additional_info': 'KWH per runtime hour'}, {'metric_name': 'top_energy_location', 'metric_value': 7780388.786058493, 'metric_description': 'Highest energy consuming location', 'additional_info': '#N/A'}] count=None
+2025-08-27 17:37:51,550 | INFO | agentic_tools | RPC Response data length: 10
+2025-08-27 17:37:51,551 | INFO | agentic_tools | Stored business performance data in Streamlit session state
+2025-08-27 17:37:52,983 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:37:53,695 | INFO | agentic_tools | Fetching comprehensive fleet health overview
+2025-08-27 17:37:54,104 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_fleet_health_overview "HTTP/2 404 Not Found"
+2025-08-27 17:37:54,105 | ERROR | agentic_tools | Error fetching fleet health overview: {'message': 'operator does not exist: text > integer', 'code': '42883', 'hint': 'No operator matches the given name and argument types. You might need to add explicit type casts.', 'details': None}
+2025-08-27 17:37:56,983 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:37:57,686 | INFO | agentic_tools | Analyzing critical issues across the fleet
+2025-08-27 17:37:58,744 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_critical_issues_analysis "HTTP/2 200 OK"
+2025-08-27 17:37:58,750 | INFO | agentic_tools | Stored 30 critical issues in session state
+2025-08-27 17:38:00,344 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:38:01,467 | INFO | agentic_tools | Analyzing high error devices with threshold: 5
+2025-08-27 17:38:01,467 | INFO | agentic_tools | RPC Parameters: {'p_error_threshold': 5}
+2025-08-27 17:38:01,468 | INFO | agentic_tools | Parameter types: [('p_error_threshold', 'int')]
+2025-08-27 17:38:01,913 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_high_error_devices "HTTP/2 200 OK"
+2025-08-27 17:38:01,928 | INFO | agentic_tools | RPC Response data length: 23
+2025-08-27 17:38:01,932 | INFO | agentic_tools | Stored 23 high error devices in session state
+2025-08-27 17:38:02,236 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 17:38:02,237 | INFO | anthropic._base_client | Retrying request to /v1/messages in 39.000000 seconds
+2025-08-27 17:38:43,386 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:38:45,305 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_overvoltage_analysis "HTTP/2 200 OK"
+2025-08-27 17:38:45,629 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 17:38:45,631 | INFO | anthropic._base_client | Retrying request to /v1/messages in 34.000000 seconds
+2025-08-27 17:39:21,965 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:39:34,199 | INFO | ai_agent | Query completed, extracting results...
+2025-08-27 17:39:34,199 | WARNING | ai_agent | No callback handler found
+2025-08-27 17:39:34,200 | INFO | ai_agent | Stored 0 tool results and token usage in session
+2025-08-27 17:48:43,201 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 17:48:43,214 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.449861 seconds
+2025-08-27 17:48:47,236 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:48:48,847 | INFO | agentic_tools | Fetching device data - device_id: None, date: None, columns: device_id,PumpError,Power,Voltage,Current,Temperature,CreatedOnDate,Location,District
+2025-08-27 17:48:51,075 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=device_id%2CPumpError%2CPower%2CVoltage%2CCurrent%2CTemperature%2CCreatedOnDate%2CLocation%2CDistrict&District=eq.Bahraich&order=CreatedOnDate.desc "HTTP/2 200 OK"
+2025-08-27 17:48:53,152 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:48:54,441 | INFO | agentic_tools | Fetching 20 device logs with filters - device_id: None, location: Newada pure kasbati
+2025-08-27 17:48:55,515 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=%2A&Location=ilike.%25Newada+pure+kasbati%25&order=CreatedOnDate.desc&limit=20 "HTTP/2 200 OK"
+2025-08-27 17:48:55,523 | INFO | agentic_tools | Created DataFrame with 20 rows for Streamlit display
+2025-08-27 17:48:56,036 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 17:48:56,038 | INFO | anthropic._base_client | Retrying request to /v1/messages in 42.000000 seconds
+2025-08-27 17:49:41,475 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:49:42,880 | INFO | agentic_tools | Fetching device data - device_id: None, date: None, columns: device_id,Location,District
+2025-08-27 17:49:44,035 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=device_id%2CLocation%2CDistrict&District=eq.Bahraich&order=CreatedOnDate.desc "HTTP/2 200 OK"
+2025-08-27 17:49:44,437 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 17:49:44,438 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.453564 seconds
+2025-08-27 17:49:45,451 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 17:49:45,453 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.977665 seconds
+2025-08-27 17:49:47,076 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 17:49:51,522 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 17:49:51,523 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.440451 seconds
+2025-08-27 17:49:52,674 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 17:49:52,675 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.842277 seconds
+2025-08-27 17:49:54,022 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 17:50:02,571 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 17:50:02,572 | INFO | anthropic._base_client | Retrying request to /v1/messages in 56.000000 seconds
+2025-08-27 17:51:02,116 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 17:51:19,449 | INFO | ai_agent | Query completed, extracting results...
+2025-08-27 17:51:19,449 | WARNING | ai_agent | No callback handler found
+2025-08-27 17:51:19,449 | INFO | ai_agent | Stored 0 tool results and token usage in session
+2025-08-27 18:03:04,783 | INFO | ai_agent | Processing query: 
+    You are an advanced IoT device monitoring assistant for the Dextro platform with comprehensive ...
+2025-08-27 18:03:04,795 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.423720 seconds
+2025-08-27 18:03:09,199 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 18:03:10,319 | INFO | agentic_tools | Fetching device data - device_id: None, date: None, columns: device_id,Location
+2025-08-27 18:03:11,897 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=device_id%2CLocation&order=CreatedOnDate.desc "HTTP/2 200 OK"
+2025-08-27 18:03:12,504 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:03:12,505 | INFO | anthropic._base_client | Retrying request to /v1/messages in 40.000000 seconds
+2025-08-27 18:04:00,289 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 18:04:01,348 | INFO | agentic_tools | Fetching device data - device_id: None, date: None, columns: device_id,Location,District
+2025-08-27 18:04:02,483 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=device_id%2CLocation%2CDistrict&order=CreatedOnDate.desc "HTTP/2 200 OK"
+2025-08-27 18:04:02,943 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:04:02,945 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.487526 seconds
+2025-08-27 18:04:03,962 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:04:03,963 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.935227 seconds
+2025-08-27 18:04:05,503 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:04:10,063 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:04:10,065 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.378930 seconds
+2025-08-27 18:04:10,953 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:04:10,954 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.923704 seconds
+2025-08-27 18:04:12,417 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:04:20,983 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:04:20,985 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.463746 seconds
+2025-08-27 18:04:22,205 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:04:22,206 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.762812 seconds
+2025-08-27 18:04:23,531 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:04:40,129 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:04:40,130 | INFO | anthropic._base_client | Retrying request to /v1/messages in 40.000000 seconds
+2025-08-27 18:05:23,747 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 18:05:24,833 | INFO | agentic_tools | Fetching comprehensive fleet health overview
+2025-08-27 18:05:26,016 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_fleet_health_overview "HTTP/2 404 Not Found"
+2025-08-27 18:05:26,017 | ERROR | agentic_tools | Error fetching fleet health overview: {'message': 'operator does not exist: text > integer', 'code': '42883', 'hint': 'No operator matches the given name and argument types. You might need to add explicit type casts.', 'details': None}
+2025-08-27 18:05:26,379 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:05:26,380 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.497017 seconds
+2025-08-27 18:05:27,362 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:05:27,363 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.822266 seconds
+2025-08-27 18:05:28,673 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:05:33,054 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:05:33,055 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.460169 seconds
+2025-08-27 18:05:34,002 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:05:34,003 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.768837 seconds
+2025-08-27 18:05:35,249 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:05:43,773 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:05:43,775 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.462106 seconds
+2025-08-27 18:05:44,718 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:05:44,719 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.795158 seconds
+2025-08-27 18:05:46,071 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:06:02,807 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:06:02,809 | INFO | anthropic._base_client | Retrying request to /v1/messages in 46.000000 seconds
+2025-08-27 18:06:52,736 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 18:06:53,694 | INFO | agentic_tools | Fetching business performance summary for 30 days
+2025-08-27 18:06:53,694 | INFO | agentic_tools | RPC Parameters: {'p_date_range_days': 30}
+2025-08-27 18:06:53,694 | INFO | agentic_tools | Parameter types: [('p_date_range_days', 'int')]
+2025-08-27 18:06:53,694 | INFO | agentic_tools | Making RPC call to rpc_business_performance_summary
+2025-08-27 18:06:55,686 | INFO | httpx | HTTP Request: POST https://uykzmqobbkmthydzymie.supabase.co/rest/v1/rpc/rpc_business_performance_summary "HTTP/2 200 OK"
+2025-08-27 18:06:55,695 | INFO | agentic_tools | RPC Response status: data=[{'metric_name': 'new_devices_installed', 'metric_value': 29, 'metric_description': 'Number of new devices installed', 'additional_info': '30 day(s)'}, {'metric_name': 'co2_savings_tonnes', 'metric_value': 232, 'metric_description': 'Annual CO2 savings in tonnes', 'additional_info': 'Environmental impact'}, {'metric_name': 'total_active_devices', 'metric_value': 29, 'metric_description': 'Currently active devices', 'additional_info': 'Fleet status'}, {'metric_name': 'total_water_production', 'metric_value': 5404563866.99, 'metric_description': 'Total litres produced', 'additional_info': 'Water output'}, {'metric_name': 'total_energy_consumption', 'metric_value': 16245923.588195752, 'metric_description': 'Total energy consumption (KWH)', 'additional_info': 'Power usage'}, {'metric_name': 'devices_with_errors', 'metric_value': 28, 'metric_description': 'Devices currently showing errors', 'additional_info': 'Health status'}, {'metric_name': 'operational_devices', 'metric_value': 29, 'metric_description': 'Fully operational devices', 'additional_info': 'Health status'}, {'metric_name': 'fleet_uptime_percent', 'metric_value': 100.0, 'metric_description': 'Overall fleet uptime percentage', 'additional_info': 'Performance metric'}, {'metric_name': 'average_efficiency', 'metric_value': 5.92, 'metric_description': 'Average energy efficiency', 'additional_info': 'KWH per runtime hour'}, {'metric_name': 'top_energy_location', 'metric_value': 7780388.786058493, 'metric_description': 'Highest energy consuming location', 'additional_info': '#N/A'}] count=None
+2025-08-27 18:06:55,695 | INFO | agentic_tools | RPC Response data length: 10
+2025-08-27 18:06:55,695 | INFO | agentic_tools | Stored business performance data in Streamlit session state
+2025-08-27 18:06:56,054 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:06:56,054 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.470262 seconds
+2025-08-27 18:06:57,127 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:06:57,127 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.774170 seconds
+2025-08-27 18:06:58,631 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:07:03,008 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:07:03,009 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.447164 seconds
+2025-08-27 18:07:04,191 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:07:04,192 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.928963 seconds
+2025-08-27 18:07:05,639 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:07:14,220 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:07:14,221 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.379314 seconds
+2025-08-27 18:07:15,360 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:07:15,360 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.929946 seconds
+2025-08-27 18:07:16,817 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:07:33,621 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:07:33,622 | INFO | anthropic._base_client | Retrying request to /v1/messages in 42.000000 seconds
+2025-08-27 18:08:19,777 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 18:08:21,844 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=%2A "HTTP/2 200 OK"
+2025-08-27 18:08:21,859 | ERROR | agentic_tools | Error fetching location performance: '>' not supported between instances of 'str' and 'int'
+2025-08-27 18:08:22,216 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:08:22,218 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.439169 seconds
+2025-08-27 18:08:23,199 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:08:23,200 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.895951 seconds
+2025-08-27 18:08:24,617 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:08:28,998 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:08:28,999 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.425763 seconds
+2025-08-27 18:08:30,057 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:08:30,058 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.964102 seconds
+2025-08-27 18:08:31,792 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:08:40,372 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:08:40,373 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.497430 seconds
+2025-08-27 18:08:41,421 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:08:41,421 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.983245 seconds
+2025-08-27 18:08:42,957 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:08:59,526 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:08:59,527 | INFO | anthropic._base_client | Retrying request to /v1/messages in 49.000000 seconds
+2025-08-27 18:09:52,659 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 18:09:53,695 | INFO | agentic_tools | Fetching 100 device logs with filters - device_id: None, location: None
+2025-08-27 18:09:54,758 | INFO | httpx | HTTP Request: GET https://uykzmqobbkmthydzymie.supabase.co/rest/v1/device_power_logs?select=%2A&order=CreatedOnDate.desc&limit=100 "HTTP/2 200 OK"
+2025-08-27 18:09:54,769 | INFO | agentic_tools | Created DataFrame with 100 rows for Streamlit display
+2025-08-27 18:09:55,331 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:09:55,333 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.447280 seconds
+2025-08-27 18:09:56,625 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:09:56,626 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.936296 seconds
+2025-08-27 18:09:58,283 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:10:02,833 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:10:02,834 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.389896 seconds
+2025-08-27 18:10:03,915 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:10:03,916 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.974639 seconds
+2025-08-27 18:10:05,692 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:10:14,688 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:10:14,689 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.470935 seconds
+2025-08-27 18:10:15,941 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:10:15,942 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.771422 seconds
+2025-08-27 18:10:17,457 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:10:34,181 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-08-27 18:10:34,182 | INFO | anthropic._base_client | Retrying request to /v1/messages in 43.000000 seconds
+2025-08-27 18:11:27,085 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-08-27 18:11:39,964 | INFO | ai_agent | Query completed, extracting results...
+2025-08-27 18:11:39,964 | WARNING | ai_agent | No callback handler found
+2025-08-27 18:11:39,964 | INFO | ai_agent | Stored 0 tool results and token usage in session
