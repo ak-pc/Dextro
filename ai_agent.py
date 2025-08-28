@@ -27,10 +27,10 @@ from postgrest.exceptions import APIError as PostgrestAPIError
 # CONFIGURATION CONSTANTS - Dextro Platform Configuration
 # =============================================================================
 
-# API Keys and Authentication (Dextro Configuration)
+#  (Dextro Configuration)
 SUPABASE_URL = "https://uykzmqobbkmthydzymie.supabase.co"
-SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV5a3ptcW9iYmttdGh5ZHp5bWllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYwNzQ2NjYsImV4cCI6MjA3MTY1MDY2Nn0.wpcgIcrEV8kLXLq9_LPC_Z20MlrCmn_HNJX3Ia_dt-I"
-CLAUDE_API_KEY = "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"
+SUPABASE_BABLA = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV5a3ptcW9iYmttdGh5ZHp5bWllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYwNzQ2NjYsImV4cCI6MjA3MTY1MDY2Nn0.wpcgIcrEV8kLXLq9_LPC_Z20MlrCmn_HNJX3Ia_dt-I"
+CLAUDE_FUN_TIME = "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"
 
 # Claude Anthropic Configuration
 CLAUDE_MODEL = "claude-3-7-sonnet-20250219"  # Using Claude Sonnet 3-7
@@ -749,7 +749,7 @@ class DextroSupabaseManager:
         return {"error": f"Operation failed after {max_retries} attempts: {last_exception}"}
 
 # Initialize global Supabase manager
-supabase_manager = DextroSupabaseManager(SUPABASE_URL, SUPABASE_ANON_KEY)
+supabase_manager = DextroSupabaseManager(SUPABASE_URL, SUPABASE_BABLA)
 
 # =============================================================================
 # REMOVED TOOLS - NOW IN agentic_tools.py
@@ -762,11 +762,11 @@ supabase_manager = DextroSupabaseManager(SUPABASE_URL, SUPABASE_ANON_KEY)
 def create_anthropic_model() -> AnthropicModel:
     """Configure Anthropic model for Claude integration"""
     
-    if not CLAUDE_API_KEY:
-        raise ValueError("CLAUDE_API_KEY is required")
+    if not CLAUDE_FUN_TIME:
+        raise ValueError("CLAUDE_FUN_TIME is required")
     
     model = AnthropicModel(
-        client_args={"api_key": CLAUDE_API_KEY},
+        client_args={"api_key": CLAUDE_FUN_TIME},
         model_id=CLAUDE_MODEL,
         max_tokens=MAX_TOKENS,
         params={
@@ -781,12 +781,12 @@ def validate_configuration():
     """Validate all required configuration is present"""
     missing_config = []
     
-    if not CLAUDE_API_KEY:
-        missing_config.append("CLAUDE_API_KEY")
+    if not CLAUDE_FUN_TIME:
+        missing_config.append("CLAUDE_FUN_TIME")
     if not SUPABASE_URL:
         missing_config.append("SUPABASE_URL")  
-    if not SUPABASE_ANON_KEY:
-        missing_config.append("SUPABASE_ANON_KEY")
+    if not SUPABASE_BABLA:
+        missing_config.append("SUPABASE_BABLA")
     
     if missing_config:
         error_msg = f"Missing required configuration: {', '.join(missing_config)}"
@@ -800,7 +800,7 @@ def validate_configuration():
 # =============================================================================
 
 @st.cache_resource
-def init_claude_agent(supabase_url: str = None, supabase_key: str = None, claude_api_key: str = None):
+def init_claude_agent(supabase_url: str = None, supabase_key: str = None, CLAUDE_FUN_TIME: str = None):
     """Initialize the Dextro IoT Agent for Streamlit integration"""
     if not STRANDS_AVAILABLE:
         logger.error("Strands SDK not available")
